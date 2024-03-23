@@ -5,13 +5,59 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nick Berens</title>
+  <style type="text/css">
+      body {
+          margin: 40px auto;
+          max-width: 650px;
+          line-height: 1.6;
+          font-size: 18px;
+          color: #444;
+          padding: 0 10px
+      }
+
+      h1,h2,h3 {
+          line-height: 1.2
+      }
+      .typo {
+          position: relative;
+          display: inline-block;
+          font-size: 1.15rem;
+          border-bottom: 3px dotted red;
+      }
+      .typo:after {
+          content: "That is spelled wrong.";
+          position: absolute;
+          top: -180%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 200px;
+          background: red;
+          color: white;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          display: none;
+      }
+      .typo:hover:after {
+          display: block;
+      }
+  </style>
 </head>
 
 <body>
-
+<div>
   <h1>👋 Hi, my name is Nick Berens</h1>
   <p>My job is hard. This site is intended to be pretty simple.</p>
-  <p>Currently, I build web apps with Vue.com</p>
+  <p>Currently, I build web apps with Vuejs.</p>
+  <h2>Hmm 🤔</h2>
+  <p>I'm trying to decide what to do with this site. I'm thinking that I will focus more on <span class="typo">archetecture</span> and devOpsie type stuff.</p>
+  <h3>Let's start with the following</h3>
+  <ul>
+    <li>✅ Host it on Netlify.</li>
+    <li>☑️ Set up a custom domain.</li>
+  </ul>
+
+</div>
+
 
 </body>
 
