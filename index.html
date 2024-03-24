@@ -18,6 +18,11 @@
       h1,h2,h3 {
           line-height: 1.2
       }
+      .banner {
+          padding: 20px;
+          border-radius: 10px;
+          background: lightblue;
+      }
       .typo {
           position: relative;
           display: inline-block;
@@ -28,8 +33,8 @@
           content: "That is spelled wrong.";
           position: absolute;
           top: -180%;
-          left: 50%;
-          transform: translateX(-50%);
+          /*left: 50%;*/
+          /*transform: translateX(-50%);*/
           width: 200px;
           background: red;
           color: white;
@@ -45,20 +50,22 @@
 
 <body>
 <div>
-  <h1>👋 Hi, my name is Nick Berens</h1>
+  <h1 class="banner">👋 Hi, my name is Nick Berens</h1>
   <p>My job is hard. This site is intended to be pretty simple.</p>
   <p>Currently, I build web apps with Vuejs.</p>
   <h2>Hmm 🤔</h2>
   <p>I'm trying to decide what to do with this site. I'm thinking that I will focus more on <span class="typo">archetecture</span> and devOpsie type stuff.</p>
   <h3>Let's start with the following.</h3>
   <ul>
-    <li>✅ Host it on Netlify.</li>
+    <li>✅
+      <a href="pages/totes-not-ai/netlify-deployment.html">Host it on Netlify.</a></li>
     <li>☑️ Set up a custom domain.</li>
   </ul>
   <h3>What else?</h3>
   <ul>
     <li>☑️ Perhaps a content management system?</li>
     <li>☑️ Maybe a templating system?</li>
+    <li>☑️ A syntax highlighter?</li>
   </ul>
 
 </div>
