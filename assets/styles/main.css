@@ -73,6 +73,7 @@ footer{
     font-size: 3rem;
     font-family: 'cowboyregular',serif;
     text-align: center;
+    font-weight: bold;
 }
 @media (max-width: 600px) {
     .banner h1 {
