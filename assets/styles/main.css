@@ -17,6 +17,7 @@ h1,h2,h3 {
     line-height: 1.2;
     font-family: 'cowboyregular',serif;
     text-transform: uppercase;
+    font-weight: bold;
 }
 .banner {
     padding: 20px;
