@@ -65,8 +65,8 @@
       .typo {
           position: relative;
           display: inline-block;
-          font-size: 1.15rem;
           border-bottom: 3px dotted red;
+          line-height: 1;
       }
       .typo:after {
           content: "That is spelled wrong.";
@@ -80,9 +80,18 @@
           padding: 0.5rem;
           border-radius: 0.5rem;
           display: none;
+          font-size: 1.15rem;
+      }
+      .typo.typo--update-font:after {
+          content: "🤠 Add © glyph to font.";
       }
       .typo:hover:after {
           display: block;
+      }
+      footer{
+          font-size: 3rem;
+          font-family: 'cowboyregular',serif;
+          text-align: center;
       }
   </style>
 </head>
@@ -90,7 +99,7 @@
 <body>
 <div>
   <header class="banner">
-    <h1>🤠 PERFECTLESS <span class="sm-d-none">🤠</span></h1>
+    <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year">2024</span> PERFECTLESS</p>
     By Nick Berens
   </header>
   <p><strong>👋 Hi, my name is Nick Berens</strong>. My job is hard. This site is intended to be pretty simple.</p>
@@ -129,7 +138,7 @@
 </div>
 <footer>
   <hr>
-  <p>© <span id="current-year">2024</span>🦶  Nick Berens</p>
+  <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year">2024</span> PERFECTLESS</p>
 </footer>
 <script>
   // Get the current date

@@ -21,6 +21,7 @@
       h2 {
           font-size: 2.5rem;
       }
+
       h1,h2,h3 {
           line-height: 1.2;
           font-family: 'cowboyregular',serif;
@@ -64,8 +65,8 @@
       .typo {
           position: relative;
           display: inline-block;
-          font-size: 1.15rem;
           border-bottom: 3px dotted red;
+          line-height: 1;
       }
       .typo:after {
           content: "That is spelled wrong.";
@@ -79,9 +80,18 @@
           padding: 0.5rem;
           border-radius: 0.5rem;
           display: none;
+          font-size: 1.15rem;
+      }
+      .typo.typo--update-font:after {
+          content: "🤠 Add © glyph to font.";
       }
       .typo:hover:after {
           display: block;
+      }
+      footer{
+          font-size: 3rem;
+          font-family: 'cowboyregular',serif;
+          text-align: center;
       }
   </style>
 </head>
@@ -131,7 +141,7 @@
 
 <footer>
   <hr>
-  <p>© <span id="current-year">2024</span>🦶 Nick Berens</p>
+  <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year">2024</span> PERFECTLESS</p>
 </footer>
 <script>
   // Get the current date
