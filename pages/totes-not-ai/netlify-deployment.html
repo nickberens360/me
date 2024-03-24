@@ -129,30 +129,25 @@
 </div>
 
 
-<!--<script>
-  const textContainers = document.querySelectorAll('.text-container');
+<footer>
+  <hr>
+  <p>© <span id="current-year">2024</span> Nick Berens</p>
+</footer>
+<script>
+  // Get the current date
+  const currentDate = new Date();
 
-  // Loop through each text container element
-  textContainers.forEach(textContainer => {
-    // Get the text content of the container
-    const text = textContainer.textContent;
+  // Get the year from the current date
+  const currentYear = currentDate.getFullYear();
 
-    // Split the text into parts separated by whitespace characters
-    const parts = text.split(/\s+/);
-
-    // Create a new HTML string with each non-whitespace part wrapped in an <h> tag within a <span>
-    const newText = parts.map(part => {
-      if (part.trim() !== '') {
-        return `<span class="bg"><h>${part}</h></span>`;
-      } else {
-        return part; // Preserve whitespace
-      }
-    }).join('');
-
-    // Replace the original text content with the modified HTML
-    textContainer.innerHTML = newText;
+  // Update the content of the paragraph element with the current year
+  document.addEventListener('DOMContentLoaded', function() {
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+      yearElement.textContent = currentYear.toString();
+    }
   });
-</script>-->
+</script>
 </body>
 
 </html>
