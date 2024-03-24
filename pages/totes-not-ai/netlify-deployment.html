@@ -37,6 +37,14 @@
       .banner h1{
           margin: 0;
       }
+      @media (max-width: 600px) {
+          .banner h1 {
+              font-size: 2.5rem;
+          }
+          .sm-d-none {
+              display: none;
+          }
+      }
       .bg {
           background: lightgreen;
           display: inline-block;
@@ -78,7 +86,7 @@
 <body>
 <div>
   <header class="banner">
-    <h1>🤠 PERFECTLESS 🤠</h1>
+    <h1>🤠 PERFECTLESS <span class="sm-d-none">🤠</span></h1>
     By Nick Berens
   </header>
   <a class="button" href="../../index.html">🔙 Home</a>
