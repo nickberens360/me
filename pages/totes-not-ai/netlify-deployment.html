@@ -16,13 +16,22 @@
       }
 
       h1,h2,h3 {
-          line-height: 1.2
+          line-height: 1.2;
+          font-family: 'cowboyregular',serif;
+          text-transform: uppercase;
       }
       .banner {
           padding: 20px;
           border-radius: 10px;
           background: lightblue;
           text-align: center;
+      }
+      .bg {
+          background: lightgreen;
+          display: inline-block;
+          margin-right: 5px;
+          margin-bottom: 5px;
+          padding: 4px 10px 2px;
       }
       .button {
           background-color: lightgray;
@@ -60,7 +69,7 @@
   <h1 class="banner">🤠 PERFECTLESS 🤠</h1>
   <a class="button" href="../../index.html">🔙 Home</a>
 
-  <h1>How to Set Up a Site in Netlify</h1>
+  <h2 class="text-container">How to Set Up a Site in Netlify</h2>
   <address class="author">By: Totes Not AI</address>
   <ul>
     <li><a href="#introduction">Introduction</a></li>
@@ -72,30 +81,53 @@
     <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 
-  <h2 id="introduction">Introduction</h2>
+  <h2 id="introduction" class="text-container">Introduction</h2>
   <p>Setting up a website on Netlify is a straightforward process that allows you to deploy your site quickly and efficiently. In this tutorial, we'll walk through the steps to set up a portfolio site on Netlify.</p>
 
-  <h2 id="step-1">Step 1: Sign Up for Netlify</h2>
+  <h2 id="step-1" class="text-container">Step_1: Sign Up for Netlify</h2>
   <p>If you haven't already, the first step is to sign up for a Netlify account. Go to the Netlify website and click on the "Sign Up" button. You can sign up using your email address or by linking your GitHub, GitLab, or Bitbucket account.</p>
 
-  <h2 id="step-2">Step 2: Create a New Site</h2>
+  <h2 id="step-2" class="text-container">Step 2: Create a New Site</h2>
   <p>Once you're logged in to your Netlify account, click on the "New site from Git" button. Choose your preferred Git provider and select the repository where your portfolio site is hosted.</p>
 
-  <h2 id="step-3">Step 3: Configure Your Site Settings</h2>
+  <h2 id="step-3" class="text-container">Step 3: Configure Your Site Settings</h2>
   <p>After selecting your repository, Netlify will automatically detect your build settings. You can configure additional settings such as the build command, publish directory, and environment variables.</p>
 
-  <h2 id="step-4">Step 4: Deploy Your Site</h2>
+  <h2 id="step-4" class="text-container">Step 4: Deploy Your Site</h2>
   <p>Once you've configured your site settings, click on the "Deploy site" button. Netlify will start building your site and deploy it once the build process is complete.</p>
 
-  <h2 id="step-5">Step 5: Set Up Custom Domain (Optional)</h2>
+  <h2 id="step-5" class="text-container">Step 5: Set Up Custom Domain (Optional)</h2>
   <p>If you have a custom domain, you can easily set it up with Netlify. Navigate to the "Domain settings" tab in your site dashboard and follow the instructions to add your custom domain.</p>
 
-  <h2 id="conclusion">Conclusion</h2>
+  <h2 id="conclusion" class="text-container">Conclusion</h2>
   <p>Congratulations! You've successfully set up a portfolio site on Netlify. With Netlify's powerful features such as continuous deployment and automatic HTTPS, you can focus on creating amazing content for your portfolio without worrying about the technical details of hosting and deployment.</p>
 </div>
 
 
+<!--<script>
+  const textContainers = document.querySelectorAll('.text-container');
 
+  // Loop through each text container element
+  textContainers.forEach(textContainer => {
+    // Get the text content of the container
+    const text = textContainer.textContent;
+
+    // Split the text into parts separated by whitespace characters
+    const parts = text.split(/\s+/);
+
+    // Create a new HTML string with each non-whitespace part wrapped in an <h> tag within a <span>
+    const newText = parts.map(part => {
+      if (part.trim() !== '') {
+        return `<span class="bg"><h>${part}</h></span>`;
+      } else {
+        return part; // Preserve whitespace
+      }
+    }).join('');
+
+    // Replace the original text content with the modified HTML
+    textContainer.innerHTML = newText;
+  });
+</script>-->
 </body>
 
 </html>
