@@ -1,13 +1,11 @@
 @import url('https://cdn.jsdelivr.net/gh/nickberens360/cowboy-font@main/stylesheet.css');
 body {
-    margin: 0;
-    padding: 0;
     /*margin: 40px auto;*/
     /*max-width: 650px;*/
     line-height: 1.6;
     font-size: 18px;
     color: #444;
-    padding: 0 10px
+    padding: 20px 15px
 }
 h1 {
     font-size: 4rem;
@@ -24,7 +22,6 @@ h1,h2,h3 {
 }
 .main-layout {
     display: flex;
-    background: lightblue;
 }
 aside {
     flex: 1 0 300px;
@@ -34,7 +31,7 @@ aside {
 }
 .main-content {
     flex: 1;
-    padding: 20px;
+    /*padding: 20px;*/
     /*background: lightcoral;*/
 }
 .banner {

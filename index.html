@@ -11,11 +11,11 @@
 
 <body>
   <div class="main-layout">
-    <aside>
+    <!--<aside>
       <h3>Finna put a sidebar here</h3>
       <button id="fetchButton">Fetch Cats</button>
       <hr>
-    </aside>
+    </aside>-->
     <div class="main-content">
       <header class="banner">
         <h1>🤠 PERFECTLESS <span class="sm-d-none">🤠</span></h1>
@@ -78,27 +78,27 @@
 
 
 
-  function fetchData() {
-    const apiUrl = 'https://cataas.com/api/cats?tags=cute';
-
-    fetch(apiUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-      });
-  }
-
-  const fetchButton = document.getElementById('fetchButton');
-
-  fetchButton.addEventListener('click', fetchData);
+  // function fetchData() {
+  //   const apiUrl = 'https://cataas.com/api/cats?tags=cute';
+  //
+  //   fetch(apiUrl)
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       console.log(data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Fetch error:', error);
+  //     });
+  // }
+  //
+  // const fetchButton = document.getElementById('fetchButton');
+  //
+  // fetchButton.addEventListener('click', fetchData);
 
 
 
