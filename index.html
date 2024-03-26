@@ -10,49 +10,57 @@
 </head>
 
 <body>
-<div>
-  <header class="banner">
-    <h1>🤠 PERFECTLESS <span class="sm-d-none">🤠</span></h1>
-    By Nick Berens
-  </header>
-  <p><strong>👋 Hi, my name is Nick Berens</strong>. My job is hard. This site is intended to be pretty simple.</p>
-  <p>Currently, I build web apps with Vuejs.</p>
-<!--  <h2>Hmm 🤔</h2>-->
-  <p>I'm trying to decide what to do with this site. I'm thinking that I will focus more on <span class="typo">archetecture</span> and devOpsie type stuff.</p>
-  <h2>Let's start with the following.</h2>
-  <ul>
-    <li>
-      ✅ Make an ugly custom font on my IPad.</li>
-      ✅ <a href="pages/totes-not-ai/netlify-deployment.html">Host the site on Netlify</a>.</li>
-    <li>✅ <a href="pages/totes-not-ai/netlify-deployment.html">Set up a custom domain</a>.</li>
-    <li>☑️ Perhaps a content management system?
-      <ul>
-        <li>Jekyll (would be nostalgic)</li>
-        <li>WordPress (would be nostalgic, but not in a good way)</li>
-        <li>Strapi (would be new and lightweight)</li>
-      </ul>
-    </li>
-    <li>☑️ Static Site Generator?
-      <ul>
-        <li>Jekyll</li>
-        <li>Eleventy</li>
-        <li>Nuxt</li>
-        <li>Next</li>
-        <li>Whatever Svelte is doing</li>
-      </ul>
-    </li>
-    <li>☑️ A syntax highlighter?
-      <ul>
-        <li>Prism</li>
-      </ul>
-    </li>
-  </ul>
-
-</div>
-<footer>
-  <hr>
-  <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year">2024</span> PERFECTLESS</p>
-</footer>
+  <div class="main-layout">
+    <aside>
+      <h3>Finna put a sidebar here</h3>
+      <button id="fetchButton">Fetch Cats</button>
+      <hr>
+    </aside>
+    <div class="main-content">
+      <header class="banner">
+        <h1>🤠 PERFECTLESS <span class="sm-d-none">🤠</span></h1>
+        By Nick Berens
+      </header>
+      <main>
+        <p><strong>👋 Hi, my name is Nick Berens</strong>. My job is hard. This site is intended to be pretty simple.</p>
+        <p>Currently, I build web apps with Vuejs.</p>
+        <!--  <h2>Hmm 🤔</h2>-->
+        <p>I'm trying to decide what to do with this site. I'm thinking that I will focus more on <span class="typo">archetecture</span> and devOpsie type stuff.</p>
+        <h2>Let's start with the following.</h2>
+        <ul>
+          <li>
+            ✅ Make an ugly custom font on my IPad.</li>
+          ✅ <a href="pages/totes-not-ai/netlify-deployment.html">Host the site on Netlify</a>.</li>
+          <li>✅ <a href="pages/totes-not-ai/netlify-deployment.html">Set up a custom domain</a>.</li>
+          <li>☑️ Perhaps a content management system?
+            <ul>
+              <li>Jekyll (would be nostalgic)</li>
+              <li>WordPress (would be nostalgic, but not in a good way)</li>
+              <li>Strapi (would be new and lightweight)</li>
+            </ul>
+          </li>
+          <li>☑️ Static Site Generator?
+            <ul>
+              <li>Jekyll</li>
+              <li>Eleventy</li>
+              <li>Nuxt</li>
+              <li>Next</li>
+              <li>Whatever Svelte is doing</li>
+            </ul>
+          </li>
+          <li>☑️ A syntax highlighter?
+            <ul>
+              <li>Prism</li>
+            </ul>
+          </li>
+        </ul>
+      </main>
+      <footer>
+        <hr>
+        <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year">2024</span> PERFECTLESS</p>
+      </footer>
+    </div>
+  </div>
 <script>
   // Get the current date
   const currentDate = new Date();
@@ -67,6 +75,33 @@
       yearElement.textContent = currentYear.toString();
     }
   });
+
+
+
+  function fetchData() {
+    const apiUrl = 'https://cataas.com/api/cats?tags=cute';
+
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      });
+  }
+
+  const fetchButton = document.getElementById('fetchButton');
+
+  fetchButton.addEventListener('click', fetchData);
+
+
+
 </script>
 </body>
 
