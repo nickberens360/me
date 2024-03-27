@@ -1,9 +1,10 @@
-@import url('https://raw.githubusercontent.com/nickberens360/cowboy-font/main/stylesheet.css');
+@import url('../fonts/cowboy/stylesheet.css');
 body {
     line-height: 1.6;
     font-size: 18px;
     color: #444;
-    padding: 20px 15px
+    padding: 0;
+    margin: 0;
 }
 h1 {
     font-size: 4rem;
@@ -18,6 +19,15 @@ h1,h2,h3 {
     text-transform: uppercase;
     font-weight: bold;
 }
+.text-uppercase {
+    text-transform: uppercase;
+}
+.font-bold {
+    font-weight: bold;
+}
+.font-cowboy {
+    font-family: 'cowboyregular',serif;
+}
 .main-layout {
     display: flex;
 }
@@ -26,9 +36,14 @@ aside {
     max-width: 300px;
     padding: 20px;
     background: lightyellow;
+    height: 100vh;
+    overflow: auto;
 }
 .main-content {
     flex: 1;
+    padding: 20px;
+    height: 100vh;
+    overflow: auto;
 }
 .banner {
     padding: 20px;

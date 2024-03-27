@@ -5,17 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🤠 Nick Berens</title>
-<!--  <link rel="stylesheet" href="assets/fonts/cowboy/stylesheet.css" />-->
+  <link rel="stylesheet" href="assets/fonts/cowboy/stylesheet.css" />
   <link rel="stylesheet" href="assets/styles/main.css" />
 </head>
 
 <body>
   <div class="main-layout">
-    <!--<aside>
-      <h3>Finna put a sidebar here</h3>
-      <button id="fetchButton">Fetch Cats</button>
-      <hr>
-    </aside>-->
+    <aside>
+       <button style="font-size: 30px; display: block; width: 220px; margin: auto; margin-bottom: 20px;" class="font-cowboy text-uppercase font-bold" id="fetchButton">Fetch Cats</button>
+      <div id="catImages"></div>
+    </aside>
     <div class="main-content">
       <header class="banner">
         <h1>🤠 PERFECTLESS <span class="sm-d-none">🤠</span></h1>
@@ -79,27 +78,34 @@
 
 
 
-  // function fetchData() {
-  //   const apiUrl = 'https://cataas.com/api/cats?tags=cute';
-  //
-  //   fetch(apiUrl)
-  //     .then(response => {
-  //       if (!response.ok) {
-  //         throw new Error('Network response was not ok');
-  //       }
-  //       return response.json();
-  //     })
-  //     .then(data => {
-  //       console.log(data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Fetch error:', error);
-  //     });
-  // }
-  //
-  // const fetchButton = document.getElementById('fetchButton');
-  //
-  // fetchButton.addEventListener('click', fetchData);
+  function fetchData() {
+    const apiUrl = 'https://cataas.com/api/cats?tags=cute';
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        document.getElementById('catImages').innerHTML = createCatImages(data);
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      });
+  }
+
+  // create html for cat images
+  function createCatImages(data) {
+    const catImages = data.map(cat => {
+      return `<img style="max-width: 100%" src="https://cataas.com/cat/${cat._id}" alt="A cute cat" />`;
+    });
+    return catImages.join('');
+  }
+
+  const fetchButton = document.getElementById('fetchButton');
+  fetchButton.addEventListener('click', fetchData);
 
 
 
