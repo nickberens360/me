@@ -5,13 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🤠 Nick Berens | Netlify Deployment</title>
-<!--  <base href="/">-->
   <link rel="stylesheet" href="../../assets/fonts/cowboy/stylesheet.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="../../assets/styles/main.css" type="text/css" charset="utf-8" />
 </head>
 
 <body>
-<div>
+
   <div class="main-layout">
   <aside>
     <button style="font-size: 30px; display: block; width: 220px; margin: auto; margin-bottom: 20px;" class="font-cowboy text-uppercase font-bold" id="fetchButton">Fetch Cats</button>
@@ -58,64 +57,13 @@
   <h2 id="conclusion" class="text-container">Conclusion</h2>
   <p>Congratulations! You've successfully set up a portfolio site on Netlify. With Netlify's powerful features such as continuous deployment and automatic HTTPS, you can focus on creating amazing content for your portfolio without worrying about the technical details of hosting and deployment.</p>
       </main>
-    </div>
+    <footer>
+      <hr>
+      <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year">2024</span> PERFECTLESS</p>
+    </footer>
   </div>
-</div>
-
-
-<footer>
-  <hr>
-  <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year">2024</span> PERFECTLESS</p>
-</footer>
-<script>
-  // Get the current date
-  const currentDate = new Date();
-
-  // Get the year from the current date
-  const currentYear = currentDate.getFullYear();
-
-  // Update the content of the paragraph element with the current year
-  document.addEventListener('DOMContentLoaded', function() {
-    const yearElement = document.getElementById('current-year');
-    if (yearElement) {
-      yearElement.textContent = currentYear.toString();
-    }
-  });
-
-
-
-  function fetchData() {
-    const apiUrl = 'https://cataas.com/api/cats?tags=cute';
-    fetch(apiUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-        document.getElementById('catImages').innerHTML = createCatImages(data);
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-      });
-  }
-
-  // create html for cat images
-  function createCatImages(data) {
-    const catImages = data.map(cat => {
-      return `<img style="max-width: 100%" src="https://cataas.com/cat/${cat._id}" alt="A cute cat" />`;
-    });
-    return catImages.join('');
-  }
-
-  const fetchButton = document.getElementById('fetchButton');
-  fetchButton.addEventListener('click', fetchData);
-
-
-
-</script>
+    <script src="../../assets/js/main.js" type="module"></script>
+  </div>
 </body>
 
 </html>

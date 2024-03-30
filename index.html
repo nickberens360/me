@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🤠 Nick Berens</title>
-  <link rel="stylesheet" href="assets/fonts/cowboy/stylesheet.css" />
+<!--  <link rel="stylesheet" href="assets/fonts/cowboy/stylesheet.css" />-->
   <link rel="stylesheet" href="assets/styles/main.css" />
 </head>
 
@@ -57,59 +57,11 @@
       </main>
       <footer>
         <hr>
-        <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year">2024</span> PERFECTLESS</p>
+        <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year"></span> PERFECTLESS</p>
       </footer>
     </div>
   </div>
-<script>
-  // Get the current date
-  const currentDate = new Date();
-
-  // Get the year from the current date
-  const currentYear = currentDate.getFullYear();
-
-  // Update the content of the paragraph element with the current year
-  document.addEventListener('DOMContentLoaded', function() {
-    const yearElement = document.getElementById('current-year');
-    if (yearElement) {
-      yearElement.textContent = currentYear.toString();
-    }
-  });
-
-
-
-  function fetchData() {
-    const apiUrl = 'https://cataas.com/api/cats?tags=cute';
-    fetch(apiUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-        document.getElementById('catImages').innerHTML = createCatImages(data);
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-      });
-  }
-
-  // create html for cat images
-  function createCatImages(data) {
-    const catImages = data.map(cat => {
-      return `<img style="max-width: 100%" src="https://cataas.com/cat/${cat._id}" alt="A cute cat" />`;
-    });
-    return catImages.join('');
-  }
-
-  const fetchButton = document.getElementById('fetchButton');
-  fetchButton.addEventListener('click', fetchData);
-
-
-
-</script>
+  <script src="assets/js/main.js" type="module"></script>
 </body>
 
 </html>
