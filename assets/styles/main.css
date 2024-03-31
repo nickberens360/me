@@ -35,7 +35,7 @@ aside {
     flex: 1 0 300px;
     max-width: 300px;
     padding: 20px;
-    background: lightyellow;
+    background: lightblue;
     height: 100vh;
     overflow: auto;
 }
@@ -44,6 +44,7 @@ aside {
     padding: 20px;
     height: 100vh;
     overflow: auto;
+    background: lightyellow;
 }
 .banner {
     padding: 20px;
