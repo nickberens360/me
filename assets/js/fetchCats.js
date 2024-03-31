@@ -1,4 +1,4 @@
-const state = {
+const catsAside = {
   catEmoji: '',
   catTitle: 'Why you no haz cats?',
   catEmojiEl: document.getElementById('catEmoji'),
@@ -63,7 +63,7 @@ const state = {
     });
   },
 
-  InitState: function() {
+  InitCatsAside: function() {
     this.fetchButtonEl.textContent = this.checkCatsFetched() ? 'Fetch more cats!' : 'Fetch cats!'
     this.catEmojiEl.textContent = this.checkCatsFetched() ? '😻' : '😿';
     this.catTitleEl.textContent = this.checkCatsFetched() ? 'You haz cats!' : 'Why you no haz cats?';;
@@ -76,5 +76,5 @@ const state = {
 
 // Attach event listeners when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  state.InitState();
+  catsAside.InitCatsAside();
 });
