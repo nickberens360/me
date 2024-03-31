@@ -12,10 +12,17 @@
 <body>
 
   <div class="main-layout">
-  <aside>
-    <button style="font-size: 30px; display: block; width: 220px; margin: auto; margin-bottom: 20px;" class="font-cowboy text-uppercase font-bold" id="fetchButton">Fetch Cats</button>
-    <div id="catImages"></div>
-  </aside>
+    <aside id="catAside" style="text-align: center">
+      <div id="catAsideContent">
+        <div style="margin-bottom: 20px;">
+          <div id="catEmoji" style="font-size: 65px; line-height: 1"></div>
+          <h3 id="catTitle" style="font-size: 25px">Why you no haz cats?</h3>
+          <button style="font-size: 18px" class="font-cowboy text-uppercase font-bold" id="fetchButton">Click to Haz Cats</button>
+        </div>
+        <div id="catImages"></div>
+        <div id="loadingMessage" style="display: none;"><span></span></div>
+      </div>
+    </aside>
   <div class="main-content">
     <header class="banner">
       <h1>🤠 PERFECTLESS <span class="sm-d-none">🤠</span></h1>
