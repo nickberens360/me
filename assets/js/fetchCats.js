@@ -33,7 +33,7 @@ const state = {
           this.catEmojiEl.textContent = '😻';
           this.fetchButtonEl.textContent = 'Fetch more cats!';
           this.catTitleEl.textContent = 'You haz cats!';
-        } , 3000);
+        } , 1000);
         this.catImagesEl.innerHTML = this.createCatImages(data);
         localStorage.setItem('catsFetched', true);
       })
