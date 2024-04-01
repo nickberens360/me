@@ -3,15 +3,22 @@ const catsAside = {
   catTitle: 'Why you no haz cats?',
   catEmojiEl: document.getElementById('catEmoji'),
   catTitleEl: document.getElementById('catTitle'),
-  loadingEl: document.getElementById('loadingMessage'),
   catImagesEl: document.getElementById('catImages'),
   fetchButtonEl: document.getElementById('fetchButton'),
+  catImages: [],
+  updateUIWithCatData: function(catData) {
+    this.catImagesEl.style.display = 'block';
+    this.catEmojiEl.classList.remove('loader');
+    this.catEmojiEl.textContent = '😻';
+    this.fetchButtonEl.textContent = 'Fetch more cats!';
+    this.catTitleEl.textContent = 'You haz cats!';
+    this.catImagesEl.innerHTML = this.createCatImages(catData);
+  },
 
   fetchData: function() {
     const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=10';
     const apiKey = 'live_VBvwBMcfnXuwE9fOdVJJleJHJPKn46JptOvoIUoKBJ7I2WVURFGvBxP1itXaZbeh';
 
-    this.loadingEl.style.display = 'flex';
     this.catImagesEl.style.display = 'none';
     this.catEmojiEl.classList.add('loader');
     fetch(apiUrl, {
@@ -26,21 +33,15 @@ const catsAside = {
         return response.json();
       })
       .then(data => {
+        this.catImages = data;
         setTimeout(() => {
-          this.loadingEl.style.display = 'none';
-          this.catImagesEl.style.display = 'block';
-          this.catEmojiEl.classList.remove('loader');
-          this.catEmojiEl.textContent = '😻';
-          this.fetchButtonEl.textContent = 'Fetch more cats!';
-          this.catTitleEl.textContent = 'You haz cats!';
+          this.updateUIWithCatData(this.catImages);
         } , 1000);
-        this.catImagesEl.innerHTML = this.createCatImages(data);
         localStorage.setItem('catsFetched', true);
+        localStorage.setItem('cats', JSON.stringify(data));
       })
       .catch(error => {
         console.error('Fetch error:', error);
-        // Hide the loading message if an error occurs
-        this.loadingEl.style.display = 'none';
       });
   },
 
@@ -57,7 +58,6 @@ const catsAside = {
   },
 
   attachEventListeners: function() {
-    // const fetchButton = document.getElementById('fetchButton');
     this.fetchButtonEl.addEventListener('click', () => {
       this.fetchData();
     });
@@ -69,7 +69,8 @@ const catsAside = {
     this.catTitleEl.textContent = this.checkCatsFetched() ? 'You haz cats!' : 'Why you no haz cats?';;
     this.attachEventListeners();
     if (this.checkCatsFetched()) {
-      this.fetchData();
+      const catData = JSON.parse(localStorage.getItem('cats'));
+      this.updateUIWithCatData(catData);
     }
   },
 };
