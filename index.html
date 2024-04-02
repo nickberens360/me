@@ -9,6 +9,17 @@
 </head>
 
 <body>
+<dialog style="width: 500px;">
+  <div class="modal-image">
+    <img
+        src="https://data.textstudio.com/output/sample/animated/5/4/4/6/warning-3-16445.gif"
+        alt="Warning! Warning! Warning!"
+    >
+  </div>
+  <p>This site is meant to be rather ridiculous. It is meant to be a place to explore new ideas and basically just mess around without the
+  pressure of sprints, stakeholders and pixel perfect expectations.</p>
+  <button id="js-hide-dialog" autofocus>Close</button>
+</dialog>
   <div class="main-layout">
     <aside id="catAside" style="text-align: center">
       <div id="catAsideContent">
@@ -22,8 +33,15 @@
       </div>
     </aside>
     <div class="main-content">
+      <button
+          id="clearLocalStorage"
+          class="button"
+          onclick="localStorage.clear(); location.reload();"
+      >
+        Clear Local Storage
+      </button>
       <header class="banner">
-        <h1>🤠 PERFECTLESS <span class="sm-d-none">🤠</span></h1>
+        <h1><span class="cowboy-theme">🤠</span> PERFECTLESS <span class="sm-d-none"><span class="cowboy-theme">🤠</span></span></h1>
         By Nick Berens
       </header>
       <main>
