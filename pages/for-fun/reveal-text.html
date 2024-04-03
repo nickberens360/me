@@ -8,10 +8,15 @@
   <link rel="stylesheet" href="../../assets/styles/main.css" type="text/css" charset="utf-8" />
   <style>
       body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
           margin: 0;
           padding: 0;
           overflow: hidden;
-          background: white
+          background: white;
+          font-family: 'cowboyregular', sans-serif;
       }
       #container {
           position: relative;
@@ -21,21 +26,36 @@
           min-height: 100px; /* Adjust the value according to your needs */
       }
       .box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
           flex: 1 1 auto; /* shorthand for flex-grow: 1, flex-shrink: 1, flex-basis: auto */
           /* Optionally, you can set a max-width to control how wide the items can grow */
           max-width: 100%; /* Adjust the value according to your needs */
-          border: 1px solid transparent;
           background-color: transparent;
+          opacity: 1;
+          transition: background-color 0.5s, opacity 0.5s;
+
       }
+      //.box:after {
+      //    content: '🤔';
+      //    font-size: 2em;
+      //    display: block;
+      //}
     .box.bg{
       background-color: black;
     }
+    .box.transparent {
+      background-color: transparent;
+      opacity: 0;
+    }
     .text {
         position: absolute;
-        top: 0;
+        top: 5px;
         left: 0;
         width: 100%;
-        font-size: 75px;
+        font-size: 4vw;
         word-break: break-all;
         line-height: .75;
     }
@@ -44,8 +64,8 @@
     }
     .wrapper {
         position: relative;
-        width: 1314px;
-        margin: 0 auto;
+        width: 90%;
+        height: 90%;
         overflow: hidden;
         z-index: 2;
     }
@@ -62,35 +82,8 @@
   <span>NOTHING</span><span>TO</span><span>HERE</span>
   <span>NOTHING</span><span>TO</span><span>HERE</span>
   <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span style="color:lightblue">YOURMOM</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span style="color:lightskyblue">HELLOWORLD</span>
+
 </div>
 </div>
   <script>
@@ -114,9 +107,15 @@
     //on hover remove class bg
     container.addEventListener('mouseover', (e) => {
       if (e.target.classList.contains('bg')) {
-        e.target.classList.remove('bg');
+        e.target.classList.add('transparent');
       }
     });
+
+    const text = document.querySelector('.text');
+    const textContent = text.innerHTML;
+    const n = 600;
+    text.innerHTML = textContent.repeat(n);
+
 
   </script>
 
