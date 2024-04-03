@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🤠 Nick Berens | Reveal Text</title>
+  <link rel="stylesheet" href="../../assets/styles/main.css" type="text/css" charset="utf-8" />
+  <style>
+      body {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background: white
+      }
+      #container {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-wrap: wrap;
+          min-height: 100px; /* Adjust the value according to your needs */
+      }
+      .box {
+          flex: 1 1 auto; /* shorthand for flex-grow: 1, flex-shrink: 1, flex-basis: auto */
+          /* Optionally, you can set a max-width to control how wide the items can grow */
+          max-width: 100%; /* Adjust the value according to your needs */
+          border: 1px solid transparent;
+          background-color: transparent;
+      }
+    .box.bg{
+      background-color: black;
+    }
+    .text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 75px;
+        word-break: break-all;
+        line-height: .75;
+    }
+    span:nth-child(odd) {
+        color: #f00;
+    }
+    .wrapper {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrapper">
+<div id="container" style=" cursor: url('https://assets.digitalocean.com/labs/doicons/general-purpose-droplet.svg?cb=1'), url('https://assets.digitalocean.com/labs/doicons/general-purpose-droplet.svg?cb=1'), move;"></div>
+<div class="text">
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span style="color:lightblue">YOURMOM</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+  <span>NOTHING</span><span>TO</span><span>HERE</span>
+</div>
+</div>
+  <script>
+    //create divs that are 10px by 10px that fill the viewport using es6
+    const boxWidth = 75;
+    const container = document.getElementById('container');
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const rows = height / boxWidth;
+    const cols = width / boxWidth;
+    const totalDivs = rows * cols;
+    const divs = Array.from({ length: totalDivs }, () => document.createElement('div'));
+    divs.forEach(div => {
+      div.style.width = boxWidth + 'px';
+      div.style.height = boxWidth + 'px';
+      div.classList.add('box');
+      div.classList.add('bg');
+      container.appendChild(div);
+    });
+
+    //on hover remove class bg
+    container.addEventListener('mouseover', (e) => {
+      if (e.target.classList.contains('bg')) {
+        e.target.classList.remove('bg');
+      }
+    });
+
+  </script>
+
+
+<!--<script src="assets/js/main.js" type="module"></script>-->
+</body>
+
+</html>
