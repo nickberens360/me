@@ -4,86 +4,100 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🤠 Nick Berens</title>
-  <link rel="stylesheet" href="assets/styles/main.css" />
+  <title>🤠 Nick Berens | Reveal Text</title>
+  <link rel="stylesheet" href="assets/styles/main.css" type="text/css" charset="utf-8" />
+  <style>
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background: white;
+          font-family: 'cowboyregular', sans-serif;
+      }
+      #container {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-wrap: wrap;
+          min-height: 100px; /* Adjust the value according to your needs */
+      }
+      .box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          flex: 1 1 auto; /* shorthand for flex-grow: 1, flex-shrink: 1, flex-basis: auto */
+          /* Optionally, you can set a max-width to control how wide the items can grow */
+          max-width: 100%; /* Adjust the value according to your needs */
+          background-color: transparent;
+          opacity: 1;
+          transition: background-color 0.5s, opacity 0.5s;
+
+      }
+      //.box:after {
+      //    content: '🤔';
+      //    font-size: 2em;
+      //    display: block;
+      //}
+      .box.bg{
+          background-color: black;
+      }
+      .box.transparent {
+          background-color: transparent;
+          opacity: 0;
+      }
+      .text {
+          position: absolute;
+          top: 8px;
+          left: 0;
+          width: 100%;
+          font-size: 4vw;
+          word-break: break-all;
+          line-height: .75;
+      }
+      span:nth-child(odd) {
+          color: #f00;
+      }
+      .wrapper {
+          position: relative;
+          width: 90%;
+          height: 90%;
+          overflow: hidden;
+          z-index: 2;
+      }
+  </style>
 </head>
 
 <body>
-<dialog style="width: 500px;">
-  <div class="modal-image">
-    <img
-        src="https://data.textstudio.com/output/sample/animated/5/4/4/6/warning-3-16445.gif"
-        alt="Warning! Warning! Warning!"
-    >
+<div class="wrapper">
+  <div id="container" style=" cursor: url('https://assets.digitalocean.com/labs/doicons/general-purpose-droplet.svg?cb=1'), url('https://assets.digitalocean.com/labs/doicons/general-purpose-droplet.svg?cb=1'), move;"></div>
+  <div class="text">
+    <span>THIS</span><span>IS</span><span>A</span><span>SUBDOMAIN</span><span>TEST</span>
+    <span>THIS</span><span>IS</span><span>A</span><span>SUBDOMAIN</span><span>TEST</span>
+    <span>THIS</span><span>IS</span><span>A</span><span>SUBDOMAIN</span><span>TEST</span>
+    <span>THIS</span><span>IS</span><span>A</span><span>SUBDOMAIN</span><span>TEST</span>
+    <span>THIS</span><span>IS</span><span>A</span><span>SUBDOMAIN</span><span>TEST</span>
+    <span>THIS</span><span>IS</span><span>A</span><span>SUBDOMAIN</span><span>TEST</span>
+
+    <span style="color:lightskyblue; font-size: 3.3vw; position: relative; top: -1px">HELLO🤔TGEE</span>
+
   </div>
-  <p>This site is meant to be rather ridiculous. It is meant to be a place to explore new ideas and basically just mess around without the
-  pressure of sprints, stakeholders and pixel perfect expectations.</p>
-  <button id="js-hide-dialog" autofocus>Close</button>
-</dialog>
-  <div class="main-layout">
-    <aside id="catAside" style="text-align: center">
-      <div id="catAsideContent">
-        <div style="margin-bottom: 20px;">
-          <div id="catEmoji" style="font-size: 65px; line-height: 1"></div>
-          <h3 id="catTitle" style="font-size: 28px">Why you no haz cats?</h3>
-          <button style="font-size: 20px" class="font-cowboy text-uppercase font-bold" id="fetchButton">Click to Haz Cats</button>
-        </div>
-        <div id="catImages"></div>
-        <div id="loadingMessage" style="display: none;"><span></span></div>
-      </div>
-    </aside>
-    <div class="main-content">
-      <button
-          id="clearLocalStorage"
-          class="button"
-          onclick="localStorage.clear(); location.reload();"
-      >
-        Clear Local Storage
-      </button>
-      <header class="banner">
-        <h1><span class="cowboy-theme">🤠</span> PERFECTLESS <span class="sm-d-none"><span class="cowboy-theme">🤠</span></span></h1>
-        By Nick Berens
-      </header>
-      <main>
-        <p><strong>👋 Hi, my name is Nick Berens</strong>. My job is hard. This site is intended to be pretty simple.</p>
-        <p>Currently, I build web apps with Vuejs.</p>
-        <!--  <h2>Hmm 🤔</h2>-->
-        <p>I'm trying to decide what to do with this site. I'm thinking that I will focus more on <span class="typo">archetecture</span> and devOpsie type stuff.</p>
-        <h2>Let's start with the following.</h2>
-        <ul>
-          <li>
-            ✅  <a href="https://cowboy-font.netlify.app/" target="_blank">Make an ugly custom font on my IPad</a>.</li>
-          ✅ <a href="pages/totes-not-ai/netlify-deployment.html">Host the site on Netlify</a>.</li>
-          <li>✅ <a href="pages/totes-not-ai/netlify-deployment.html">Set up a custom domain</a>.</li>
-          <li>☑️ Perhaps a content management system?
-            <ul>
-              <li>Jekyll would be nostalgic</li>
-              <li>WordPress would be nostalgic, but not in a good way</li>
-              <li>Strapi would be new and lightweight</li>
-            </ul>
-          </li>
-          <li>☑️ Static Site Generator?
-            <ul>
-              <li>Jekyll</li>
-              <li>Eleventy</li>
-              <li>Nuxt</li>
-              <li>Next</li>
-              <li>Whatever Svelte is doing</li>
-            </ul>
-          </li>
-          <li>☑️ A syntax highlighter?
-            <ul>
-              <li>Prism</li>
-            </ul>
-          </li>
-        </ul>
-      </main>
-      <footer>
-        <hr>
-        <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year"></span> PERFECTLESS</p>
-      </footer>
-    </div>
-  </div>
+</div>
+<script>
+
+  const text = document.querySelector('.text');
+  const textContent = text.innerHTML;
+  const n = 600;
+  text.innerHTML = textContent.repeat(n);
+
+
+</script>
+
+
 <script src="assets/js/main.js" type="module"></script>
 </body>
 
