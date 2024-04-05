@@ -7,13 +7,6 @@
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-<button
-    id="clearLocalStorage"
-    class="button"
-    onclick="localStorage.clear(); location.reload();"
->
-  Clear Local Storage
-</button>
   <div class="main-layout">
     <aside id="part-aside" style="text-align: center"></aside>
     <div class="main-content">
@@ -27,6 +20,13 @@
       <footer>
 <!--        <hr>-->
         <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year"></span> PERFECTLESS</p>
+        <button
+            id="clearLocalStorage"
+            class="button"
+            onclick="localStorage.clear(); location.reload();"
+        >
+          Clear Local Storage
+        </button>
       </footer>
     </div>
   </div>
