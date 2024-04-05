@@ -80,6 +80,7 @@ aside {
     100% { transform: rotate(360deg); }
 }
 .loader {
+    display: inline-block;
     justify-content: center;
     align-items: center;
     width: 70px;
