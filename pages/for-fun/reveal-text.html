@@ -17,32 +17,28 @@
           overflow: hidden;
           background: white;
           font-family: 'cowboyregular', sans-serif;
+          letter-spacing: unset;
+          color: black;
       }
       #container {
           position: relative;
           z-index: 1;
           display: flex;
           flex-wrap: wrap;
-          min-height: 100px; /* Adjust the value according to your needs */
+          min-height: 100px;
       }
       .box {
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          flex: 1 1 auto; /* shorthand for flex-grow: 1, flex-shrink: 1, flex-basis: auto */
-          /* Optionally, you can set a max-width to control how wide the items can grow */
-          max-width: 100%; /* Adjust the value according to your needs */
+          flex: 1 1 auto;
+          max-width: 100%;
           background-color: transparent;
           opacity: 1;
           transition: background-color 0.5s, opacity 0.5s;
 
       }
-      //.box:after {
-      //    content: '🤔';
-      //    font-size: 2em;
-      //    display: block;
-      //}
     .box.bg{
       background-color: black;
     }
@@ -50,9 +46,9 @@
       background-color: transparent;
       opacity: 0;
     }
-    .text {
+    #text {
         position: absolute;
-        top: 5px;
+        top: 9px;
         left: 0;
         width: 100%;
         font-size: 4vw;
@@ -60,11 +56,11 @@
         line-height: .75;
     }
     span:nth-child(odd) {
-        color: #f00;
+        color: red;
     }
     .wrapper {
         position: relative;
-        width: 90%;
+        max-width: 1031px;
         height: 90%;
         overflow: hidden;
         z-index: 2;
@@ -74,20 +70,12 @@
 
 <body>
 <div class="wrapper">
-<div id="container" style=" cursor: url('https://assets.digitalocean.com/labs/doicons/general-purpose-droplet.svg?cb=1'), url('https://assets.digitalocean.com/labs/doicons/general-purpose-droplet.svg?cb=1'), move;"></div>
-<div class="text">
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span>NOTHING</span><span>TO</span><span>HERE</span>
-  <span style="color:lightskyblue">HELLOWORLD</span>
-
-</div>
+  <div id="container"></div>
+  <div id="text"></div>
 </div>
   <script>
-    //create divs that are 10px by 10px that fill the viewport using es6
+    const doc = document;
+
     const boxWidth = 75;
     const container = document.getElementById('container');
     const width = window.innerWidth;
@@ -104,23 +92,26 @@
       container.appendChild(div);
     });
 
-    //on hover remove class bg
     container.addEventListener('mouseover', (e) => {
       if (e.target.classList.contains('bg')) {
         e.target.classList.add('transparent');
       }
     });
 
-    const text = document.querySelector('.text');
-    const textContent = text.innerHTML;
-    const n = 600;
-    text.innerHTML = textContent.repeat(n);
+    function revealText() {
+      let nTsHTmpl = '<span>NOTHING</span><span>TO</span><span>HERE</span>';
+      let helloWorldTmpl = '<span style="color:blue">HELLO<span></span>WORLD</span>';
+      let nTsH = nTsHTmpl.repeat(7);
+      let helloWorld = helloWorldTmpl.repeat(1);
+      let secondRound = nTsHTmpl.repeat(400);
+      doc.getElementById('text').innerHTML = nTsH + helloWorld + secondRound;
+    }
+
+    revealText();
 
 
   </script>
 
-
-<!--<script src="assets/js/main.js" type="module"></script>-->
 </body>
 
 </html>
