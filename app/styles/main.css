@@ -1,5 +1,9 @@
-@import url('../fonts/cowboy/stylesheet.css');
-@import url('../fonts/kindaSansSerif/stylesheet.css');
+@import url('../assets/fonts/cowboy/stylesheet.css');
+@import url('../assets/fonts/kindaSansSerif/stylesheet.css');
+
+* {
+    box-sizing: border-box;
+}
 body {
     line-height: 1.6;
     font-size: 18px;
@@ -35,7 +39,10 @@ opacity: 0.75;
 }
 
 #clearLocalStorage {
-    float: right;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 20px;
 }
 
 .modal-image {
@@ -53,19 +60,68 @@ opacity: 0.75;
     display: flex;
 }
 aside {
-    flex: 1 0 300px;
-    max-width: 300px;
-    padding: 20px;
-    /*background: lightblue;*/
+    /*background: #f4f4f4;*/
+    flex: 1 0 50px;
+    max-width: 50px;
     height: 100vh;
     overflow: auto;
+    background: #eee;
+    transition: flex 0.5s, max-width 0.5s;
 }
+.cat-aside-top {
+    position: sticky;
+    top: 0;
+    padding: 10px;
+}
+.cat-aside-top-emoji {
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    transition: font-size 0.5s;
+}
+.cat-aside-top-content {
+    position: relative;
+    left: -9999px;
+    height: 0;
+    margin-top: 10px;
+    transition: left 0.5s, height 0.5s;
+}
+.cat-aside-top-title {
+    margin: 0;
+}
+
+#catImages {
+    padding: 0 5px;
+}
+#catImages img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.aside-open .cat-aside-top-title {
+    left: 0;
+}
+.aside-open aside {
+    flex: 1 0 200px;
+    max-width: 200px;
+}
+.aside-open .cat-aside-top-emoji {
+    font-size: 65px;
+}
+
+.aside-open .cat-aside-top-content {
+    left: 0;
+    height: 59px;
+}
+
+
 .main-content {
-    flex: 1;
+    flex: 1 1 700px;
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
     height: 100vh;
     overflow: auto;
-    /*background: lightyellow;*/
 }
 
 .cowboy-theme {
@@ -85,7 +141,6 @@ aside {
     align-items: center;
     width: 70px;
     height: 70px;
-    font-size: 50px;
     margin: 0 auto;
     line-height: 1;
     animation: spin 1s linear infinite; /* Apply the spin animation infinitely */

@@ -1,3 +1,15 @@
+// `<dialog style="width: 500px;">
+//   <div class="modal-image">
+//     <img
+//         src="https://data.textstudio.com/output/sample/animated/5/4/4/6/warning-3-16445.gif"
+//         alt="Warning! Warning! Warning!"
+//     >
+//   </div>
+//   <p>This site is meant to be rather ridiculous. It is meant to be a place to explore new ideas and basically just mess around without the
+//   pressure of sprints, stakeholders and pixel perfect expectations.</p>
+//   <button id="js-hide-dialog" autofocus>Close</button>
+// </dialog>`
+
 const dialogStates = {
   dialogEl:  document.querySelector("dialog"),
   showButton: document.getElementById("js-show-dialog"),

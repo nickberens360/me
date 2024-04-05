@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🤠 Nick Berens</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+<button
+    id="clearLocalStorage"
+    class="button"
+    onclick="localStorage.clear(); location.reload();"
+>
+  Clear Local Storage
+</button>
+  <div class="main-layout">
+    <aside id="part-aside" style="text-align: center"></aside>
+    <div class="main-content">
+      <header>
+        <div id="part-hero"></div>
+        <a href="https://nickberens.me/">Home</a> | <a href="https://gist.github.com/nickberens360/6497d8d82f9c5a32728e5d07ee4a3297">About</a>
+      </header>
+      <main>
+        <div id="content-home"></div>
+      </main>
+      <footer>
+        <hr>
+        <p>🦶 <span class="typo typo--update-font">©</span> <span id="current-year"></span> PERFECTLESS</p>
+      </footer>
+    </div>
+  </div>
+<script src="./js/main.js" type="module"></script>
+</body>
+
+</html>
