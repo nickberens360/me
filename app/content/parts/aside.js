@@ -20,10 +20,8 @@ const asideState = {
       }
 
       const data = await response.json();
-      this.catImages = data;
-
       // Update UI with cat data
-      this.updateUIWithCatData(this.catImages);
+      this.updateUIWithCatData(data);
 
       // Store fetched data in localStorage
       localStorage.setItem('catsFetched', true);
@@ -36,36 +34,61 @@ const asideState = {
 
   // Update UI with fetched cat data
   updateUIWithCatData: function(catData) {
-    document.getElementById('catImages').style.display = 'block';
-    document.getElementById('catEmoji').classList.remove('loader');
-    document.getElementById('catEmoji').textContent = '😻';
-    document.getElementById('fetchButton').textContent = 'Haz more cats!';
-    document.getElementById('catTitle').textContent = 'You haz cats!';
-    document.getElementById('catImages').innerHTML = this.createCatImages(catData);
+    document.getElementById('js-cat-fetch-images').style.display = 'block';
+    document.getElementById('js-cat-fetch-icon').classList.remove('loader');
+    document.getElementById('js-cat-fetch-icon').textContent = '😻';
+    document.getElementById('js-cat-fetch-btn').textContent = 'Haz more cats!';
+    document.getElementById('js-cat-fetch-title').textContent = 'You haz cats!';
+    document.getElementById('js-cat-fetch-images').innerHTML = this.createCatImages(catData);
   },
 
   // Show loading state
   showLoadingState: function() {
-    document.getElementById('catImages').style.display = 'none';
-    document.getElementById('catEmoji').classList.add('loader');
-    document.getElementById('catEmoji').textContent = '😺';
-    document.getElementById('fetchButton').textContent = 'Loading...';
-    document.getElementById('catTitle').textContent = 'Fetching cats...';
+    document.getElementById('js-cat-fetch-images').style.display = 'none';
+    document.getElementById('js-cat-fetch-icon').classList.add('loader');
+    document.getElementById('js-cat-fetch-icon').textContent = '😺';
+    document.getElementById('js-cat-fetch-btn').textContent = 'Loading...';
+    // document.getElementById('js-cat-fetch-icon').textContent = 'Fetching cats...';
   },
 
   // Show error state
   showErrorState: function() {
-    document.getElementById('catImages').style.display = 'none';
-    document.getElementById('catEmoji').classList.remove('loader');
-    document.getElementById('catEmoji').textContent = '😿';
-    document.getElementById('fetchButton').textContent = 'Try again';
-    document.getElementById('catTitle').textContent = 'Error fetching cats';
+    document.getElementById('js-cat-fetch-images').style.display = 'none';
+    document.getElementById('js-cat-fetch-icon').classList.remove('loader');
+    document.getElementById('js-cat-fetch-icon').textContent = '😿';
+    document.getElementById('js-cat-fetch-btn').textContent = 'Try again';
+    document.getElementById('js-cat-fetch-icon').textContent = 'Error fetching cats';
   },
 
   // Create HTML for cat images
   createCatImages: function(data) {
     return data.map(cat => `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`).join('');
   },
+
+  // Initialize the cats section
+  initCatsAside: function() {
+    // Set initial UI state based on whether cats have been fetched
+    const catsFetched = localStorage.getItem('catsFetched') === 'true';
+    document.getElementById('js-cat-fetch-icon').textContent = catsFetched ? '😻' : '😿';
+    document.getElementById('js-cat-fetch-title').textContent = catsFetched ? 'You haz cats!' : 'Why you no haz cats?';
+    document.getElementById('js-cat-fetch-btn').textContent = catsFetched ? 'Haz more cats!' : 'Haz cats!';
+
+    // Attach event listener to fetch button
+    document.getElementById('js-cat-fetch-btn').addEventListener('click', () => {
+      this.fetchData();
+    });
+    document.getElementById('js-cat-fetch-icon').addEventListener('click', () => {
+      document.querySelector('body').classList.toggle('aside-open');
+    });
+
+
+    // If cats have been fetched previously, display them
+    if (catsFetched) {
+      const catData = JSON.parse(localStorage.getItem('cats'));
+      this.updateUIWithCatData(catData);
+    }
+  },
+
 
   // Initialize the aside state
   init: async function() {
@@ -84,30 +107,6 @@ const asideState = {
       this.showErrorState();
     }
   },
-
-  // Initialize the cats section
-  initCatsAside: function() {
-    // Set initial UI state based on whether cats have been fetched
-    const catsFetched = localStorage.getItem('catsFetched') === 'true';
-    document.getElementById('catEmoji').textContent = catsFetched ? '😻' : '😿';
-    document.getElementById('catTitle').textContent = catsFetched ? 'You haz cats!' : 'Why you no haz cats?';
-    document.getElementById('fetchButton').textContent = catsFetched ? 'Haz more cats!' : 'Haz cats!';
-
-    // Attach event listener to fetch button
-    document.getElementById('fetchButton').addEventListener('click', () => {
-      this.fetchData();
-    });
-    document.getElementById('catEmoji').addEventListener('click', () => {
-      document.querySelector('body').classList.toggle('aside-open');
-    });
-
-
-    // If cats have been fetched previously, display them
-    if (catsFetched) {
-      const catData = JSON.parse(localStorage.getItem('cats'));
-      this.updateUIWithCatData(catData);
-    }
-  }
 };
 
 export default asideState;

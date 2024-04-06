@@ -1,74 +1,86 @@
-const catsAside = {
-  catEmoji: '',
-  catTitle: 'Why you no haz cats?',
-  catEmojiEl: document.getElementById('catEmoji'),
-  catTitleEl: document.getElementById('catTitle'),
-  catImagesEl: document.getElementById('catImages'),
-  fetchButtonEl: document.getElementById('fetchButton'),
-  catImages: [],
-  updateUIWithCatData: function(catData) {
-    this.catImagesEl.style.display = 'block';
-    this.catEmojiEl.classList.remove('loader');
-    this.catEmojiEl.textContent = '😻';
-    this.fetchButtonEl.textContent = 'Fetch more cats!';
-    this.catTitleEl.textContent = 'You haz cats!';
-    this.catImagesEl.innerHTML = this.createCatImages(catData);
-  },
-
-  fetchData: function() {
-    const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=10';
+const fetchCats = {
+  // Fetch cat data from the API
+  fetchData: async function() {
+    const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=20';
     const apiKey = 'live_VBvwBMcfnXuwE9fOdVJJleJHJPKn46JptOvoIUoKBJ7I2WVURFGvBxP1itXaZbeh';
 
-    this.catImagesEl.style.display = 'none';
-    this.catEmojiEl.classList.add('loader');
-    fetch(apiUrl, {
-      headers: {
-        'x-api-key': apiKey
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+    try {
+      this.showLoadingState();
+      const response = await fetch(apiUrl, {
+        headers: {
+          'x-api-key': apiKey
         }
-        return response.json();
-      })
-      .then(data => {
-        this.catImages = data;
-        setTimeout(() => {
-          this.updateUIWithCatData(this.catImages);
-        } , 1000);
-        localStorage.setItem('catsFetched', true);
-        localStorage.setItem('cats', JSON.stringify(data));
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
       });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      // Update UI with cat data
+      this.updateUIWithCatData(data);
+
+      // Store fetched data in localStorage
+      localStorage.setItem('catsFetched', true);
+      localStorage.setItem('cats', JSON.stringify(data));
+    } catch (error) {
+      console.error('Fetch error:', error);
+      this.showErrorState();
+    }
   },
 
-  checkCatsFetched: function() {
-    const catsFetched = localStorage.getItem('catsFetched');
-    return catsFetched === 'true';
+  // Update UI with fetched cat data
+  updateUIWithCatData: function(catData) {
+    document.getElementById('js-cat-fetch-images').style.display = 'block';
+    document.getElementById('js-cat-fetch-icon').classList.remove('loader');
+    document.getElementById('js-cat-fetch-icon').textContent = '😻';
+    document.getElementById('js-cat-fetch-btn').textContent = 'Haz more cats!';
+    document.getElementById('js-cat-fetch-title').textContent = 'You haz cats!';
+    document.getElementById('js-cat-fetch-images').innerHTML = this.createCatImages(catData);
   },
 
+  // Show loading state
+  showLoadingState: function() {
+    document.getElementById('js-cat-fetch-images').style.display = 'none';
+    document.getElementById('js-cat-fetch-icon').classList.add('loader');
+    document.getElementById('js-cat-fetch-icon').textContent = '😺';
+    document.getElementById('js-cat-fetch-btn').textContent = 'Loading...';
+    // document.getElementById('js-cat-fetch-icon').textContent = 'Fetching cats...';
+  },
+
+  // Show error state
+  showErrorState: function() {
+    document.getElementById('js-cat-fetch-images').style.display = 'none';
+    document.getElementById('js-cat-fetch-icon').classList.remove('loader');
+    document.getElementById('js-cat-fetch-icon').textContent = '😿';
+    document.getElementById('js-cat-fetch-btn').textContent = 'Try again';
+    document.getElementById('js-cat-fetch-icon').textContent = 'Error fetching cats';
+  },
+
+  // Create HTML for cat images
   createCatImages: function(data) {
-    const catImages = data.map(cat => {
-      return `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`;
-    });
-    return catImages.join('');
+    return data.map(cat => `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`).join('');
   },
 
-  attachEventListeners: function() {
-    this.fetchButtonEl.addEventListener('click', () => {
-      this.fetchData();
-    });
-  },
+  // Initialize the cats section
+  initFetchCats: function() {
+    // Set initial UI state based on whether cats have been fetched
+    const catsFetched = localStorage.getItem('catsFetched') === 'true';
+    document.getElementById('js-cat-fetch-icon').textContent = catsFetched ? '😻' : '😿';
+    document.getElementById('js-cat-fetch-title').textContent = catsFetched ? 'You haz cats!' : 'Why you no haz cats?';
+    document.getElementById('js-cat-fetch-btn').textContent = catsFetched ? 'Haz more cats!' : 'Haz cats!';
 
-  InitCatsAside: function() {
-    this.fetchButtonEl.textContent = this.checkCatsFetched() ? 'Fetch more cats!' : 'Fetch cats!'
-    this.catEmojiEl.textContent = this.checkCatsFetched() ? '😻' : '😿';
-    this.catTitleEl.textContent = this.checkCatsFetched() ? 'You haz cats!' : 'Why you no haz cats?';;
-    this.attachEventListeners();
-    if (this.checkCatsFetched()) {
+    // Attach event listener to fetch button
+    document.getElementById('js-cat-fetch-btn').addEventListener('click', () => {
+      this.fetchData().then();
+    });
+    document.getElementById('js-cat-fetch-icon').addEventListener('click', () => {
+      document.querySelector('body').classList.toggle('aside-open');
+    });
+
+
+    // If cats have been fetched previously, display them
+    if (catsFetched) {
       const catData = JSON.parse(localStorage.getItem('cats'));
       this.updateUIWithCatData(catData);
     }
@@ -77,5 +89,7 @@ const catsAside = {
 
 // Attach event listeners when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  catsAside.InitCatsAside();
+  fetchCats.initFetchCats();
 });
+
+export default fetchCats;
