@@ -5,7 +5,6 @@ const loadContent = {
   content: '',
   getServerSideProps: async function() {
     const response = await fetch(`https://api.github.com/gists/${this.gistId}`);
-    console.log(response)
     return await response.json();
   },
   renderContent: function() {
@@ -16,6 +15,7 @@ const loadContent = {
       const data = await this.getServerSideProps();
       this.content = data.files[this.gistFile].content;
       this.renderContent();
+      return data.files[this.gistFile].content;
     } catch (error) {
       console.error('Error initializing API:', error);
       throw error;

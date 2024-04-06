@@ -7,7 +7,6 @@ const homeState = {
             loadContent.gistFile = 'Home.md';
             loadContent.contentElementId = 'content-home';
             await loadContent.init();
-            console.log('Home initialized successfully');
         } catch (error) {
             console.error('Error initializing home:', error);
             throw error;

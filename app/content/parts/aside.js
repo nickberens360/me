@@ -30,7 +30,6 @@ const asideState = {
       localStorage.setItem('cats', JSON.stringify(data));
     } catch (error) {
       console.error('Fetch error:', error);
-      // Display error message to the user
       this.showErrorState();
     }
   },
@@ -40,7 +39,7 @@ const asideState = {
     document.getElementById('catImages').style.display = 'block';
     document.getElementById('catEmoji').classList.remove('loader');
     document.getElementById('catEmoji').textContent = '😻';
-    document.getElementById('fetchButton').textContent = 'Fetch more cats!';
+    document.getElementById('fetchButton').textContent = 'Haz more cats!';
     document.getElementById('catTitle').textContent = 'You haz cats!';
     document.getElementById('catImages').innerHTML = this.createCatImages(catData);
   },
