@@ -88,8 +88,8 @@ const fetchCats = {
 };
 
 // Attach event listeners when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  fetchCats.initFetchCats();
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//   fetchCats.initFetchCats();
+// });
 
 export default fetchCats;
