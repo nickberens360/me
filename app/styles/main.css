@@ -74,7 +74,7 @@ aside {
     background: #131313;
     /*background: #eee;*/
     transition: flex 0.25s, width 0.25s;
-    padding: 5px 5px;
+    padding: 5px 10px;
 }
 .cat-aside-top {
     position: sticky;
@@ -83,7 +83,7 @@ aside {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 8px;
+    padding: 8px;
     background: lightsalmon;
     border-radius: 4px;
 }
