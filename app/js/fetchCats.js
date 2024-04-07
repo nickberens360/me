@@ -1,81 +1,106 @@
-const catsAside = {
-  catEmoji: '',
-  catTitle: 'Why you no haz cats?',
-  catEmojiEl: document.getElementById('catEmoji'),
-  catTitleEl: document.getElementById('catTitle'),
-  catImagesEl: document.getElementById('catImages'),
-  fetchButtonEl: document.getElementById('fetchButton'),
-  catImages: [],
-  updateUIWithCatData: function(catData) {
-    this.catImagesEl.style.display = 'block';
-    this.catEmojiEl.classList.remove('loader');
-    this.catEmojiEl.textContent = '😻';
-    this.fetchButtonEl.textContent = 'Fetch more cats!';
-    this.catTitleEl.textContent = 'You haz cats!';
-    this.catImagesEl.innerHTML = this.createCatImages(catData);
-  },
+const fetchCats = {
+  name: 'fetchCats',
+  icon: '',
+  title: '',
+  btnText: '',
+  images: '',
+  loading: false,
 
-  fetchData: function() {
-    const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=10';
+  domTemplate: function() {
+    const iconClasses = this.loading ? 'cat-fetch__icon loader' : 'cat-fetch__icon';
+    return `
+    <div id="cat-fetch">
+      <div class=cat-fetch__top>
+        <div class="${iconClasses}" id="js-cat-fetch-icon">${this.icon}</div>
+        <div class="cat-fetch__title-content">
+          <h3 class="cat-fetch__title" id="js-cat-fetch-title" style="font-size: 15px">${this.title}</h3>
+          <button class="cat-fetch__btn text-uppercase font-bold" id="js-cat-fetch-btn">${this.btnText}</button>
+        </div>
+      </div>
+      <div class="cat-fetch__images" id="js-cat-fetch-images">${this.images}</div>
+    </div>`;
+  },
+  renderTemplate: async function() {
+    document.getElementById('side-drawer').innerHTML = this.domTemplate();
+  },
+  hasCatsState: async function() {
+    this.icon = '😻';
+    this.title = 'You haz cats!';
+    this.btnText = 'Haz more cats!';
+    this.loading = false;
+    await this.renderTemplate();
+  },
+  noCatsState: async function() {
+    this.images = '';
+    this.loading = false;
+    this.icon = '😿';
+    this.title = 'Why you no haz cats?';
+    this.btnText = 'Haz cats!';
+    await this.renderTemplate();
+  },
+  loadingState: async function() {
+    this.icon = '😺';
+    this.title = 'Fetching cats...';
+    this.btnText = 'Loading...';
+    this.images = '';
+    this.loading = true;
+    await this.renderTemplate();
+  },
+  fetchData: async function() {
+    await this.loadingState();
+    const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=20';
     const apiKey = 'live_VBvwBMcfnXuwE9fOdVJJleJHJPKn46JptOvoIUoKBJ7I2WVURFGvBxP1itXaZbeh';
-
-    this.catImagesEl.style.display = 'none';
-    this.catEmojiEl.classList.add('loader');
-    fetch(apiUrl, {
-      headers: {
-        'x-api-key': apiKey
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+    try {
+      const response = await fetch(apiUrl, {
+        headers: {
+          'x-api-key': apiKey
         }
-        return response.json();
-      })
-      .then(data => {
-        this.catImages = data;
-        setTimeout(() => {
-          this.updateUIWithCatData(this.catImages);
-        } , 1000);
-        localStorage.setItem('catsFetched', true);
-        localStorage.setItem('cats', JSON.stringify(data));
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
       });
-  },
 
-  checkCatsFetched: function() {
-    const catsFetched = localStorage.getItem('catsFetched');
-    return catsFetched === 'true';
-  },
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
-  createCatImages: function(data) {
-    const catImages = data.map(cat => {
-      return `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`;
-    });
-    return catImages.join('');
-  },
-
-  attachEventListeners: function() {
-    this.fetchButtonEl.addEventListener('click', () => {
-      this.fetchData();
-    });
-  },
-
-  InitCatsAside: function() {
-    this.fetchButtonEl.textContent = this.checkCatsFetched() ? 'Fetch more cats!' : 'Fetch cats!'
-    this.catEmojiEl.textContent = this.checkCatsFetched() ? '😻' : '😿';
-    this.catTitleEl.textContent = this.checkCatsFetched() ? 'You haz cats!' : 'Why you no haz cats?';;
-    this.attachEventListeners();
-    if (this.checkCatsFetched()) {
-      const catData = JSON.parse(localStorage.getItem('cats'));
-      this.updateUIWithCatData(catData);
+      const data = await response.json();
+      await this.createCatImages(data);
+      setTimeout(() => {
+        this.hasCatsState();
+      } , 1000);
+      localStorage.setItem('catsFetched', true);
+      localStorage.setItem('cats', JSON.stringify(data));
+    } catch (error) {
+      console.error('Fetch error:', error);
     }
+  },
+  createCatImages: async function(data) {
+    this.images = data.map(cat => `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`).join('');
+  },
+  catsFetched: localStorage.getItem('catsFetched') === 'true',
+
+  setEventListeners: function() {
+    const container = document.getElementById('side-drawer');
+    container.addEventListener('click', (event) => {
+      if (event.target.id === 'js-cat-fetch-btn') {
+        this.fetchData().then();
+      } else if (event.target.id === 'js-cat-fetch-icon') {
+        console.log('clicked');
+        document.querySelector('body').classList.toggle('aside-open');
+      }
+    });
+  },
+
+  initModuleState: async function() {
+    const catsFetched = this.catsFetched;
+    if (catsFetched) {
+      const catData = JSON.parse(localStorage.getItem('cats'));
+      await this.createCatImages(catData);
+      await this.hasCatsState();
+      document.querySelector('body').classList.toggle('aside-open');
+    } else {
+      await this.noCatsState();
+    }
+    this.setEventListeners();
   },
 };
 
-// Attach event listeners when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  catsAside.InitCatsAside();
-});
+export default fetchCats;

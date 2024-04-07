@@ -7,14 +7,10 @@
 body {
     line-height: 1.6;
     font-size: 18px;
-    /*color: #444;*/
     padding: 0;
     margin: 0;
     background: #1c1c1c;
     color: white;
-    /*font-family: 'kinda_sans_serifregular',serif;*/
-    /*font-weight: bold;*/
-    /*letter-spacing: 1px;*/
 }
 h1 {
     font-size: 4rem;
@@ -25,7 +21,6 @@ h2 {
 
 h1,h2,h3 {
     line-height: 1.2;
-    /*font-family: 'cowboyregular',serif;*/
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -39,10 +34,6 @@ h1,h2,h3 {
     );
     opacity: 0.75;
 }
-
-/*.top-bar {*/
-/*    flex: 0 0 100%;*/
-/*}*/
 
 .modal-image {
     height: 75px;
@@ -71,74 +62,73 @@ aside {
     width: 65px;
     height: 100vh;
     overflow: auto;
-    background: #131313;
-    /*background: #eee;*/
     transition: flex 0.25s, width 0.25s;
-    padding: 5px 10px;
+    padding: 0 5px 10px;
 }
-.cat-aside-top {
+.cat-fetch__top {
     position: sticky;
+    z-index: 1;
     top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 8px;
-    background: lightsalmon;
-    border-radius: 4px;
+    padding-top: 16px;
+    background: #131313;
+    border-radius: 0 0 4px 4px;
 }
-.cat-aside-top-emoji {
+.cat-fetch__icon {
     font-size: 32px;
     line-height: 1;
     cursor: pointer;
     transition: font-size 0.25s;
 }
-.cat-aside-top-content {
+.cat-fetch__title-content {
     position: relative;
     left: -9999px;
     height: 0;
     overflow: hidden;
     clip: rect(0 0 0 0);
-    /*margin-top: 10px;*/
     transition: left 0.5s, height 0.25s;
     color: white;
 }
-.cat-aside-top-title {
+.cat-fetch__title {
     margin: 0;
 }
 
-#catImages {
+#js-cat-fetch-images {
     position: relative;
     left: -9999px;
     padding: 5px 0;
     transition: left 0.5s;
 }
-.aside-open #catImages {
+.aside-open #js-cat-fetch-images {
     left: 0;
 }
-#catImages img {
+#js-cat-fetch-images img {
     width: 100%;
     border-radius: 5px;
 }
 
-.aside-open .cat-aside-top-title {
+.aside-open .cat-fetch__title {
     left: 0;
 }
 .aside-open aside {
     flex: 1 0 200px;
     width: 200px;
 }
-.aside-open .cat-aside-top-emoji {
+.aside-open .cat-fetch__icon {
     font-size: 65px;
 }
 
-.aside-open .cat-aside-top-content {
+.aside-open .cat-fetch__title-content {
     left: 0;
-    height: 59px;
+    height: auto;
 }
 
 a {
-    color: lightsalmon;
+    color: blue;
     text-decoration: none;
 }
 
@@ -170,16 +160,6 @@ a {
         font-size: 16px;
     }
 }
-/*@media (max-width: 1360px) {*/
-/*    #part-hero pre {*/
-/*        font-size: .8vw;*/
-/*    }*/
-/*}*/
-/*@media (max-width: 800px) {*/
-/*    #part-hero pre {*/
-/*        font-size: 1vw;*/
-/*    }*/
-/*}*/
 
 footer {
     display: flex;
@@ -211,115 +191,9 @@ footer {
     height: 70px;
     margin: 0 auto;
     line-height: 1;
-    animation: spin 1s linear infinite; /* Apply the spin animation infinitely */
+    animation: spin 1s linear infinite;
 }
 .loader span {
     display: block;
     text-align: center;
 }
-
-/*
-.text-uppercase {
-    text-transform: uppercase;
-}
-.font-bold {
-    font-weight: bold;
-}
-.font-cowboy {
-    font-family: 'cowboyregular',serif;
-}
-
-.banner {
-    padding: 20px;
-    border-radius: 10px;
-    background: black;
-    color: white;
-    text-align: center;
-    margin-bottom: 24px;
-}
-.banner h1{
-    margin: 0;
-}
-.bg {
-    background: lightgreen;
-    display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    padding: 4px 10px 2px;
-}
-.button {
-    background-color: lightgray;
-    border: 1px solid black;
-    padding: 5px 10px;
-    text-decoration: none;
-}
-.typo {
-    position: relative;
-    display: inline-block;
-    border-bottom: 3px dotted red;
-    line-height: 1;
-}
-.typo:after {
-    content: "That is spelled wrong.";
-    position: absolute;
-    top: -180%;
-    !*left: 50%;*!
-    !*transform: translateX(-50%);*!
-    width: 200px;
-    background: red;
-    color: white;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    display: none;
-    font-size: 1.15rem;
-}
-.typo.typo--update-font:after {
-    content: "🤠 Add © glyph to font.";
-}
-.typo:hover:after {
-    display: block;
-}
-footer{
-    font-size: 3rem;
-    font-family: 'cowboyregular',serif;
-    text-align: center;
-    font-weight: bold;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.cat-emoji--happy {
-    border: 1px solid black;
-}
-
-.loader {
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 70px;
-    font-size: 50px;
-    margin: 0 auto;
-    line-height: 1;
-    animation: spin 1s linear infinite; !* Apply the spin animation infinitely *!
-}
-.loader span {
-    display: block;
-    text-align: center;
-}
-@media (max-width: 600px) {
-    .banner h1 {
-        font-size: 2.5rem;
-    }
-    .sm-d-none {
-        display: none;
-    }
-    h2 {
-        font-size: 2rem;
-    }
-    footer{
-        font-size: 1.5rem;
-    }
-}*/

@@ -4,7 +4,7 @@ const loadContent = {
   contentElementId: '',
   content: '',
   getServerSideProps: async function() {
-    const response = await fetch(`https://api.github.com/gists/${this.gistId}`);
+    const response = await fetch(`https://api.github.com/gists/${this.gistId}`, {});
     return await response.json();
   },
   renderContent: function() {
