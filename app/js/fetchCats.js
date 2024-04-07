@@ -1,5 +1,9 @@
+
+
+
 const fetchCats = {
-  // Fetch cat data from the API
+  contentId: '9aece3879846b2dcdc35705b03ddfd84',
+  contentFile: 'Aside.md',
   fetchData: async function() {
     const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=20';
     const apiKey = 'live_VBvwBMcfnXuwE9fOdVJJleJHJPKn46JptOvoIUoKBJ7I2WVURFGvBxP1itXaZbeh';
@@ -18,7 +22,12 @@ const fetchCats = {
 
       const data = await response.json();
       // Update UI with cat data
+
+
+
+
       this.updateUIWithCatData(data);
+
 
       // Store fetched data in localStorage
       localStorage.setItem('catsFetched', true);
@@ -62,10 +71,12 @@ const fetchCats = {
     return data.map(cat => `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`).join('');
   },
 
+  catsFetched: localStorage.getItem('catsFetched') === 'true',
+
+
   // Initialize the cats section
-  initFetchCats: function() {
-    // Set initial UI state based on whether cats have been fetched
-    const catsFetched = localStorage.getItem('catsFetched') === 'true';
+  initModuleState: function() {
+    const catsFetched = this.catsFetched;
     document.getElementById('js-cat-fetch-icon').textContent = catsFetched ? '😻' : '😿';
     document.getElementById('js-cat-fetch-title').textContent = catsFetched ? 'You haz cats!' : 'Why you no haz cats?';
     document.getElementById('js-cat-fetch-btn').textContent = catsFetched ? 'Haz more cats!' : 'Haz cats!';
@@ -86,10 +97,5 @@ const fetchCats = {
     }
   },
 };
-
-// Attach event listeners when the DOM content is loaded
-// document.addEventListener('DOMContentLoaded', function() {
-//   fetchCats.initFetchCats();
-// });
 
 export default fetchCats;

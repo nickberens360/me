@@ -1,4 +1,4 @@
-import loadContent from '../../js/utils/loadContent.js';
+import loadContent from '../../utils/loadContent.js';
 
 const heroState = {
     init: async function() {
