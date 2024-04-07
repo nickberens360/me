@@ -1,28 +1,21 @@
-import loadContent from '../../utils/loadContent.js';
 const asideState = {
   // Initialize the aside state
   init: async function() {
-
     try {
-      const dataFileName = this.getModuleName();
+      const dataFileName = await this.getModuleName();
       const module = await import(`../../${dataFileName}.js`);
-      const contentId = module.default.contentId;
-      const contentFileName = module.default.contentFile;
 
-      // Load content from the server
-      loadContent.gistId = contentId;
-      loadContent.gistFile = contentFileName;
-      loadContent.contentElementId = 'part-aside';
-      await loadContent.init();
-      module.default.initModuleState();
+      console.log('module', module);
+      console.log('dataFileName', dataFileName);
+
+      document.getElementById('part-aside').innerHTML = await module.default.initModuleState();
     } catch (error) {
       console.error('Error initializing aside:', error);
     }
   },
-  getModuleName: await function() {
+  getModuleName: async function() {
     return document.getElementById('part-aside').getAttribute('data-module-name');
   },
-
-
 };
+
 export default asideState;
