@@ -1,8 +1,6 @@
-import '../../index.js';
 import './currentYear.js';
 import fetchCats  from './fetchCats.js';
 import home from './content/home/home.js';
-// import aside from './content/parts/aside.js';
 import hero from './content/parts/hero.js';
 
 document.addEventListener('DOMContentLoaded', async function() {
@@ -18,12 +16,6 @@ document.addEventListener('DOMContentLoaded', async function() {
   } catch (error) {
     console.error('Error initializing fetchCats:', error);
   }
-
-  // try {
-  //   await aside.init();
-  // } catch (error) {
-  //   console.error('Error initializing aside:', error);
-  // }
 
   try {
     await hero.init();
