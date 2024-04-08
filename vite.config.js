@@ -7,7 +7,7 @@ console.log('fileURLToPath', fileURLToPath);
 export default defineConfig({
   root: "./src",
   build: {
-    outDir: './src/dist'
+    outDir: 'dist'
   },
   resolve: {
     alias: {
