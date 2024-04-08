@@ -147,14 +147,30 @@ a {
     position: relative;
     margin-bottom: 10px;
     border: 5px solid transparent;
+    line-height: 1;
 }
 #part-hero pre {
     font-size: 1vw;
+    color: yellow;
+    position: relative;
+    z-index: 1;
+    top: 4px;
+    transform: skew(-10deg);
 }
-#part-hero pre:last-child {
+#part-hero pre:nth-child(2) {
     position: absolute;
-    top: 0;
+    color: #007bff;
+    left: 3px;
+    top: 2px;
 }
+#part-hero pre:nth-child(3) {
+    position: absolute;
+    color: red;
+    left: 5px;
+    top: 0;
+    font-weight: bold;
+}
+
 @media (max-width: 800px) {
     body {
         font-size: 16px;

@@ -9,7 +9,7 @@ const heroState = {
             await loadContent.init();
             //duplicate contents of part-hero and append back to part-hero
             const heroContent = document.getElementById('part-hero').innerHTML;
-            document.getElementById('part-hero').innerHTML = heroContent + heroContent;
+            document.getElementById('part-hero').innerHTML = heroContent + heroContent + heroContent;
         } catch (error) {
             console.error('Error initializing hero:', error);
             throw error;
