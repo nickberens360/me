@@ -1,10 +1,18 @@
+const ght = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
+console.log(import.meta.env);
 const loadContent = {
   gistId: '',
   gistFile: '',
   contentElementId: '',
   content: '',
+  accessToken: ght,
+  // accessToken: import.meta.env.VITE_GITHUB_ACCESS_TOKEN,
   getServerSideProps: async function() {
-    const response = await fetch(`https://api.github.com/gists/${this.gistId}`, {});
+    const response = await fetch(`https://api.github.com/gists/${this.gistId}`, {
+      headers: {
+        Authorization: `token ${this.accessToken}`
+      }
+    });
     return await response.json();
   },
   renderContent: function() {

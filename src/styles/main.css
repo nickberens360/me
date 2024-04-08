@@ -99,7 +99,7 @@ aside {
 
 #js-cat-fetch-images {
     position: relative;
-    left: -9999px;
+    /*left: -9999px;*/
     padding: 5px 0;
     transition: left 0.5s;
 }
