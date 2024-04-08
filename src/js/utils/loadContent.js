@@ -1,5 +1,4 @@
 const ght = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
-console.log(import.meta.env);
 const loadContent = {
   gistId: '',
   gistFile: '',
