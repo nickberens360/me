@@ -32,7 +32,7 @@ h1,h2,h3 {
     padding: 10px 20px;
 }
 a {
-    color: blue;
+    color: lightgreen;
     text-decoration: none;
     font-weight: bold;
 }
@@ -61,7 +61,12 @@ a {
     /*padding-left: 85px;*/
     transition: padding-left 0.25s;
     text-align: center;
+}
 
+.flex-container {
+    /*max-width: 1400px;*/
+    /*margin: 0 auto;*/
+    gap: 30px;
 }
 
 .modal-image {
@@ -127,10 +132,10 @@ aside {
     position: fixed;
     left: 0;
     top: 0;
+    bottom: 0;
     z-index: 1;
     flex: 1 0 65px;
     width: 65px;
-    height: 100vh;
     overflow: auto;
     transition: flex 0.25s, width 0.25s;
     padding: 0 5px 10px;
