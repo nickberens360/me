@@ -11,17 +11,29 @@ body {
     margin: 0;
     background: #1c1c1c;
     color: white;
+    font-family: 'kinda_sans_serifregular', sans-serif;
 }
 h1 {
     font-size: 4rem;
 }
 h2 {
-    font-size: 2.5rem;
+    /*font-size: 2.5rem;*/
+    font-family: 'cowboyregular', sans-serif;
 }
 
 h1,h2,h3 {
     line-height: 1.2;
     text-transform: uppercase;
+    font-weight: normal;
+    font-family: 'cowboyregular', sans-serif;
+}
+.app-nav {
+    text-align: right;
+    padding: 10px 20px;
+}
+a {
+    color: blue;
+    text-decoration: none;
     font-weight: bold;
 }
 ::backdrop {
@@ -35,6 +47,23 @@ h1,h2,h3 {
     opacity: 0.75;
 }
 
+.font-cowboy {
+    font-family: 'cowboyregular', sans-serif;
+}
+
+.hero-text {
+    font-size: 12.5vw;
+    line-height: 1;
+    /*margin: 30px 0 0;*/
+    color: lightgreen;
+    margin: 0;
+    padding-top: 30px;
+    /*padding-left: 85px;*/
+    transition: padding-left 0.25s;
+    text-align: center;
+
+}
+
 .modal-image {
     height: 75px;
     overflow: hidden;
@@ -45,18 +74,59 @@ h1,h2,h3 {
 .modal-image img {
     width: 200px;
 }
+.hero {
+    position: relative;
+    margin-bottom: 10px;
+    border: 5px solid transparent;
+    line-height: 1;
+}
+.hero pre {
+    font-size: 1vw;
+    color: yellow;
+    position: relative;
+    z-index: 1;
+    top: 4px;
+    transform: skew(-10deg);
+}
+.hero pre:nth-child(2) {
+    position: absolute;
+    color: #007bff;
+    left: 3px;
+    top: 2px;
+}
+.hero pre:nth-child(3) {
+    position: absolute;
+    color: red;
+    left: 5px;
+    top: 0;
+    font-weight: bold;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
 
 .main-layout {
     display: flex;
     padding-left: 85px;
     transition: padding-left 0.25s;
 }
-.aside-open .main-layout {
-    padding-left: 200px;
-}
+.main-content {
+     display: flex;
+     flex-direction: column;
+     /*flex: 1 1 1200px;*/
+     /*max-width: 1200px;*/
+     margin: 0 auto;
+     padding: 0 20px;
+     height: 100vh;
+     /*overflow: auto;*/
+ }
 aside {
     position: fixed;
     left: 0;
+    top: 0;
     z-index: 1;
     flex: 1 0 65px;
     width: 65px;
@@ -64,6 +134,10 @@ aside {
     overflow: auto;
     transition: flex 0.25s, width 0.25s;
     padding: 0 5px 10px;
+    background: #131313;
+}
+.aside-open .main-layout {
+    padding-left: 200px;
 }
 .cat-fetch__top {
     position: sticky;
@@ -96,24 +170,19 @@ aside {
 .cat-fetch__title {
     margin: 0;
 }
-
-#js-cat-fetch-images {
+.cat-fetch__images {
     position: relative;
     /*left: -9999px;*/
     padding: 5px 0;
     transition: left 0.5s;
 }
-.aside-open #js-cat-fetch-images {
-    left: 0;
-}
-#js-cat-fetch-images img {
+.cat-fetch__images img {
     width: 100%;
     border-radius: 5px;
 }
 
-.aside-open .cat-fetch__title {
-    left: 0;
-}
+
+
 .aside-open aside {
     flex: 1 0 200px;
     width: 200px;
@@ -121,60 +190,28 @@ aside {
 .aside-open .cat-fetch__icon {
     font-size: 65px;
 }
-
+.aside-open .cat-fetch__title {
+    left: 0;
+}
 .aside-open .cat-fetch__title-content {
     left: 0;
     height: auto;
 }
-
-a {
-    color: blue;
-    text-decoration: none;
+.aside-open .cat-fetch__images {
+    left: 0;
 }
 
-.main-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 1200px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    height: 100vh;
-    overflow: auto;
-}
 
-#part-hero {
-    position: relative;
-    margin-bottom: 10px;
-    border: 5px solid transparent;
-    line-height: 1;
-}
-#part-hero pre {
-    font-size: 1vw;
-    color: yellow;
-    position: relative;
-    z-index: 1;
-    top: 4px;
-    transform: skew(-10deg);
-}
-#part-hero pre:nth-child(2) {
-    position: absolute;
-    color: #007bff;
-    left: 3px;
-    top: 2px;
-}
-#part-hero pre:nth-child(3) {
-    position: absolute;
-    color: red;
-    left: 5px;
-    top: 0;
-    font-weight: bold;
-}
+
 
 @media (max-width: 800px) {
     body {
         font-size: 16px;
     }
+    .aside-open .main-layout {
+        padding-left: 85px;
+    }
+
 }
 
 footer {

@@ -7,7 +7,6 @@ const heroState = {
             loadContent.gistFile = 'Hero.md';
             loadContent.contentElementId = 'part-hero';
             await loadContent.init();
-            //duplicate contents of part-hero and append back to part-hero
             const heroContent = document.getElementById('part-hero').innerHTML;
             document.getElementById('part-hero').innerHTML = heroContent + heroContent + heroContent;
         } catch (error) {
