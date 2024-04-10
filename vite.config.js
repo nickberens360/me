@@ -12,7 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         cowboy: resolve(__dirname, 'src/pages/for-fun/cowboy-font.html'),
-        kinda: resolve(__dirname, 'src/pages/for-fun/kinda-sans-serif.html'),
+        kinda: resolve(__dirname, 'src/pages/for-fun/kinda-sans-serif-font.html'),
         revealText: resolve(__dirname, 'src/pages/for-fun/reveal-text.html'),
       },
     },
