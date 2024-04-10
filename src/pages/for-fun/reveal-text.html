@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🤠 Nick Berens | Reveal Text</title>
+  <link rel="stylesheet" href="../../assets/fonts/cowboy/stylesheet.css" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="../../styles/main.css" type="text/css" charset="utf-8" />
   <style>
       body {
@@ -15,10 +16,10 @@
           margin: 0;
           padding: 0;
           overflow: hidden;
-          background: white;
           font-family: 'cowboyregular', sans-serif;
           letter-spacing: unset;
-          color: black;
+          color: white;
+          background: #1c1c1c;
       }
       #container {
           position: relative;
@@ -56,7 +57,7 @@
         line-height: .75;
     }
     span:nth-child(odd) {
-        color: red;
+        color: #f66b6b;
     }
     .wrapper {
         position: relative;
@@ -64,12 +65,41 @@
         height: 90%;
         overflow: hidden;
         z-index: 2;
+        text-align: center;
+    }
+    span {
+        display: inline;
+        background-color: black;
+    }
+    .hero-text {
+        font-size: 36px;
+        margin: 0;
+        margin-right: auto;
+        padding: 0;
+    }
+    header {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        z-index: 3;
     }
   </style>
 </head>
 
 <body>
-<div class="wrapper">
+<header>
+  <h1 class="font-cowboy hero-text">
+    PERFECTLESS
+  </h1>
+  <a style="color: white; text-decoration: underline" class="font-kinda" href="/">Home</a>
+  <p class="font-kinda">A doodle cuz bored</p>
+</header>
+
+<div class="wrapper font-cowboy">
   <div id="container"></div>
   <div id="text"></div>
 </div>
@@ -100,7 +130,7 @@
 
     function revealText() {
       let nTsHTmpl = '<span>NOTHING</span><span>TO</span><span>HERE</span>';
-      let helloWorldTmpl = '<span style="color:blue">HELLO<span></span>WORLD</span>';
+      let helloWorldTmpl = '<span style="color: #70d1f1">PERFECTLESS<span></span>WORLD</span>';
       let nTsH = nTsHTmpl.repeat(7);
       let helloWorld = helloWorldTmpl.repeat(1);
       let secondRound = nTsHTmpl.repeat(400);
