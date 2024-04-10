@@ -37,7 +37,8 @@
           max-width: 100%;
           background-color: transparent;
           opacity: 1;
-          transition: background-color 0.5s, opacity 0.5s;
+          transform: scale(1) rotate(0);
+          transition: background-color 0.5s, opacity 0.5s, transform 0.5s;
 
       }
     .box.bg{
@@ -45,7 +46,8 @@
     }
     .box.transparent {
       background-color: transparent;
-      opacity: 0;
+      //opacity: 0;
+      transform: scale(0) rotate(360deg);
     }
     #text {
         position: absolute;
@@ -96,10 +98,12 @@
 
 <body>
 <header>
+  <audio id="audio" src="../../assets/sounds/pacman_chomp.mp3"></audio>
+
   <h1 class="font-cowboy hero-text">
     PERFECTLESS
   </h1>
-  <nav>
+  <nav class="font-kinda">
     <ul style="padding-left: 10px;">
       <li><a href="/">Home</a></li>
       <li><a href="cowboy-font.html">Cowboy Font</a></li>
@@ -149,6 +153,23 @@
     }
 
     revealText();
+
+    var boxes = document.querySelectorAll('.box');
+
+    // Get the audio element
+    var audio = document.getElementById('audio');
+
+    // Set the playback speed (for example, 1.5x)
+    audio.playbackRate = 1;
+
+    // Loop through each box element and add event listener
+    boxes.forEach(function(box) {
+      box.addEventListener('mouseover', function() {
+        audio.play();
+      });
+    });
+
+
 
 
   </script>
