@@ -50,6 +50,9 @@ a {
 .font-cowboy {
     font-family: 'cowboyregular', sans-serif;
 }
+.font-kinda {
+    font-family: 'kinda_sans_serifregular', sans-serif;
+}
 
 .hero-text {
     font-size: 12.5vw;

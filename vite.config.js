@@ -12,7 +12,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         cowboy: resolve(__dirname, 'src/pages/for-fun/cowboy-font.html'),
-        hoverThings: resolve(__dirname, 'src/pages/for-fun/reveal-text.html'),
+        kinda: resolve(__dirname, 'src/pages/for-fun/kinda-sans-serif.html'),
+        revealText: resolve(__dirname, 'src/pages/for-fun/reveal-text.html'),
       },
     },
   },
