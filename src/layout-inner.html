@@ -3,45 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🤠 Nick Berens</title>
+  <title>🤠 Nick Berens | Inner Layout</title>
   <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/layout-inner.css" />
 </head>
-<body>
+<body class="layout-inner">
 <div class="layout-drawer">
   Side Drawer
 </div>
-<dialog>
-  <nav>
-    <ul>
-      <li><a href="pages/for-fun/cowboy-font.html">Cowboy Font</a></li>
-      <li><a href="pages/for-fun/kinda-sans-serif-font.html">Kinda Sans Serif Font</a></li>
-      <li>
-        <a href="pages/for-fun/reveal-text.html">Pointless Hover Thing</a></li>
-    </ul>
-  </nav>
-  <button id="js-hide-dialog" autofocus>Close</button>
-</dialog>
 <div class="layout">
-  <header class="layout-header">
-    <div class="layout-header__icon"><button id="js-show-dialog" class="menu-icon">☰</button></div>
+  <header class="layout-header show-mobile-flex">
+    <div class="layout-header__icon"><button class="menu-icon">☰</button></div>
     <p class="font-cowboy hero">PERFECTLESS</p>
   </header>
   <div class="layout-container">
     <aside class="layout-side hide-mobile">
+      <header class="layout-header">
+        <p class="font-cowboy hero">PERFECTLESS</p>
+      </header>
       <nav class="layout-nav">
         <ul>
-          <li><a href="pages/for-fun/cowboy-font.html">Cowboy Font</a></li>
-          <li><a href="pages/for-fun/kinda-sans-serif-font.html">Kinda Sans Serif Font</a></li>
-          <li>
-            <a href="pages/for-fun/reveal-text.html">Pointless Hover Thing</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </nav>
     </aside>
     <div class="layout-main">
       <main>
-        <h1 class="font-cowboy">Hi, My name is Nick Berens</h1>
-        <p>Hero Layout is a layout that is perfect for a landing page or home page. It has a large hero section at the top of the page, followed by a main content area and a footer.</p>
-        <p>It is a great layout for a simple website that doesn't need a lot of pages or complex navigation.</p>
+        <h1 class="font-cowboy">Heading One</h1>
       </main>
       <footer class="layout-footer">
         <p>Footer</p>
@@ -52,7 +42,7 @@
 </div>
 
 
-<script src="js/main.js" type="module"></script>
+<!--<script src="js/main.js" type="module"></script>-->
 <script>
   console.log('\n' +
     ' _______  _______  ______    _______  _______  _______  _______  ___      _______  _______  _______\n' +

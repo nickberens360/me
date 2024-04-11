@@ -15,9 +15,9 @@ const dialogStates = {
   showButton: document.getElementById("js-show-dialog"),
   closeButton: document.getElementById("js-hide-dialog"),
   attachEventListeners: function() {
-    // this.showButton.addEventListener('click', () => {
-    //   this.openDialog();
-    // });
+    this.showButton.addEventListener('click', () => {
+      this.openDialog();
+    });
     this.closeButton.addEventListener('click', () => {
       this.closeDialog();
     });

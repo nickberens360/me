@@ -1,0 +1,16 @@
+
+.layout-inner .layout-container {
+    /*padding: 0;*/
+    max-width: 100%;
+}
+.layout-inner .layout-main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.layout-inner .layout-side .layout-header{
+    padding: 0;
+}
+.layout-inner .layout-side .hero{
+    font-size: 34rem;
+}
