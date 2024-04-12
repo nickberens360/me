@@ -16,6 +16,7 @@ body {
     background: #1c1c1c;
     color: white;
     font-family: 'kinda_sans_serifregular', sans-serif;
+    overflow: hidden;
 }
 p {
     font-size: 24rem;
@@ -97,9 +98,11 @@ dialog {
     gap: 36rem;
     max-width: 1450px;
     margin: 0 auto;
-    padding: 0 16rem;
     width: 100%;
     flex-grow: 1;
+    flex-direction: column;
+    padding: 16rem 16rem 0;
+    overflow: auto;
 }
 .layout-side {
     flex: 1 0 200px;
@@ -133,6 +136,7 @@ dialog {
     flex-grow: 1;
     height: 100vh;
     padding-top: 16rem;
+    /*overflow: hidden;*/
 }
 .layout-footer {
     width: 100%;
@@ -191,14 +195,14 @@ dialog {
 
 @keyframes rotateAndFall {
     0% {
-        transform: rotate(0deg) translateY(0);
+        transform: rotate(36deg) translateY(0);
     }
     10% {
         transform: rotate(36deg) translateY(0);
     }
     100% {
         transform: translateY(200vh);
-        opacity: .5;
+        opacity: 0;
     }
 }
 
@@ -255,10 +259,6 @@ nav a {
     }
     .hide-mobile {
         display: none;
-    }
-    .layout-container {
-        flex-direction: column;
-        padding-top: 16rem;
     }
     .layout-side {
         flex: 1 0 100%;

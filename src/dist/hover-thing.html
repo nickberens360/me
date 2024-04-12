@@ -1,0 +1,180 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🤠 Nick Berens | Reveal Text</title>
+  
+  
+  <style>
+      #container {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-wrap: wrap;
+          min-height: 100px;
+      }
+      .box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          flex: 1 1 auto;
+          max-width: 100%;
+          background-color: transparent;
+          opacity: 1;
+          transform: scale(1) rotate(0);
+          transition: background-color 0.5s, opacity 0.5s, transform 0.5s;
+
+      }
+      .box.bg{
+          background-color: black;
+      }
+      .box.transparent {
+          background-color: transparent;
+      //opacity: 0;
+          transform: scale(0) rotate(360deg);
+      }
+      #text {
+          position: absolute;
+          top: 9px;
+          left: 0;
+          width: 100%;
+          font-size: 4vw;
+          word-break: break-all;
+          line-height: .85;
+      }
+      .wrapper {
+          position: relative;
+          max-width: 1040px;
+          height: 83vh;
+          overflow: hidden;
+          z-index: 2;
+          text-align: center;
+          display: flex;
+          font-family: 'cowboyregular', sans-serif;
+      }
+      #text span {
+          display: inline;
+          background-color: black;
+      }
+      #text span:nth-child(odd) {
+          color: #f66b6b;
+      }
+  </style>
+  <script type="module" crossorigin src="/assets/main.84ff4a13.js"></script>
+  <link rel="stylesheet" href="/assets/main.a96fa0a0.css">
+  <link rel="stylesheet" href="/assets/layout-inner.e6af5b7f.css">
+</head>
+
+<body class="layout-inner">
+  <audio id="audio" src="assets/sounds/pacman_chomp.mp3"></audio>
+<div class="layout">
+  <dialog>
+    <nav>
+      <ul>
+        <li><a href="cowboy-font.html">Cowboy Font</a></li>
+        <li><a href="kinda-sans-font.html">Kinda Sans Serif Font</a></li>
+        <li>
+          <a href="hover-thing.html">Pointless Hover Thing</a></li>
+      </ul>
+    </nav>
+    <button id="js-hide-dialog" autofocus>Close</button>
+  </dialog>
+  <header class="layout-header show-mobile-flex">
+    <div class="layout-header__icon"><button id="js-show-dialog" class="menu-icon">☰</button></div>
+    <p class="font-cowboy hero"><a href="index.html">PERFECTLES<span>S</span></a></p>
+  </header>
+  <div class="layout-container">
+    <aside class="layout-side hide-mobile">
+      <header class="layout-header">
+        <p class="font-cowboy hero"><a href="index.html">PERFECTLES<span>S</span></a></p>
+      </header>
+      <nav class="layout-nav">
+        <ul>
+          <li><a href="cowboy-font.html">Cowboy Font</a></li>
+          <li><a href="kinda-sans-font.html">Kinda Sans Serif Font</a></li>
+          <li>
+            <a href="hover-thing.html">Pointless Hover Thing</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="layout-main">
+      <main>
+        <div class="wrapper font-cowboy">
+          <div id="container"></div>
+          <div id="text"></div>
+        </div>
+      </main>
+      <footer class="layout-footer">
+        <p>Footer</p>
+      </footer>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<script>
+  const doc = document;
+
+  const boxWidth = 75;
+  const container = document.getElementById('container');
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const rows = height / boxWidth;
+  const cols = width / boxWidth;
+  const totalDivs = rows * cols;
+  const divs = Array.from({ length: totalDivs }, () => document.createElement('div'));
+  divs.forEach(div => {
+    div.style.width = boxWidth + 'px';
+    div.style.height = boxWidth + 'px';
+    div.classList.add('box');
+    div.classList.add('bg');
+    container.appendChild(div);
+  });
+
+  container.addEventListener('mouseover', (e) => {
+    if (e.target.classList.contains('bg')) {
+      e.target.classList.add('transparent');
+    }
+  });
+
+  function revealText() {
+    let nTsHTmpl = '<span>NOTHING</span><span>TO</span><span>SEE</span><span>HERE</span>';
+    let helloWorldTmpl = '<span style="color: #70d1f1">PERFECTLESS<span style="color: lightgreen">/</span>WORLD</span>';
+    let nTsH = nTsHTmpl.repeat(7);
+    let helloWorld = helloWorldTmpl.repeat(1);
+    let secondRound = nTsHTmpl.repeat(400);
+    doc.getElementById('text').innerHTML = nTsH + helloWorld + secondRound;
+  }
+
+  revealText();
+
+  var boxes = document.querySelectorAll('.box');
+
+  // Get the audio element
+  var audio = document.getElementById('audio');
+
+  // Set the playback speed (for example, 1.5x)
+  audio.playbackRate = 1;
+
+  // Loop through each box element and add event listener
+  boxes.forEach(function(box) {
+    box.addEventListener('mouseover', function() {
+      audio.play();
+    });
+  });
+
+
+
+
+</script>
+
+</body>
+
+</html>
