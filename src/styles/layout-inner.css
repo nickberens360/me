@@ -1,8 +1,4 @@
 
-.layout-inner .layout-container {
-    /*padding: 0;*/
-    max-width: 100%;
-}
 .layout-inner .layout-main {
     max-width: 900px;
     margin: 0 auto;

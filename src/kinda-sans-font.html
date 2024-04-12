@@ -3,10 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🤠 Nick Berens</title>
+  <title>🤠 Nick Berens | Cowboy Font</title>
   <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/layout-inner.css" />
+  <style>
+    p {
+      line-height: 1;
+      margin-bottom: 34rem;
+    }
+    .font-container {
+        font-size: 5.5vw;
+        word-wrap: anywhere;
+        line-height: 1;
+    }
+    @media (max-width: 768px) {
+      .font-container {
+        font-size: 8.5vw;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="layout-inner">
 <div class="layout-drawer">
   Side Drawer
 </div>
@@ -22,12 +39,15 @@
   <button id="js-hide-dialog" autofocus>Close</button>
 </dialog>
 <div class="layout">
-  <header class="layout-header">
+  <header class="layout-header show-mobile-flex">
     <div class="layout-header__icon"><button id="js-show-dialog" class="menu-icon">☰</button></div>
-    <p class="font-cowboy hero">PERFECTLES<span>S</span></p>
+    <p class="font-cowboy hero"><a href="index.html">PERFECTLES<span>S</span></a></p>
   </header>
   <div class="layout-container">
     <aside class="layout-side hide-mobile">
+      <header class="layout-header">
+        <p class="font-cowboy hero"><a href="index.html">PERFECTLES<span>S</span></a></p>
+      </header>
       <nav class="layout-nav">
         <ul>
           <li><a href="cowboy-font.html">Cowboy Font</a></li>
@@ -36,26 +56,31 @@
             <a href="hover-thing.html">Pointless Hover Thing</a></li>
         </ul>
       </nav>
-
     </aside>
     <div class="layout-main">
       <main>
-        <h1 class="font-cowboy" style="display: flex; gap: 6px"><span>🤘</span> Hi, My name is Nick Berens</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime nobis quia tenetur veniam. Ad architecto beatae doloribus exercitationem libero nemo perspiciatis quisquam sed, ut! Animi blanditiis impedit praesentium quaerat veniam.</p>
-        <h2>Heading 2</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam dolor dolorum laudantium? Ad dicta doloremque eos eum expedita iusto qui repudiandae tenetur. Optio placeat recusandae rem, repudiandae sit veritatis!</p>
+        <h1 class="font-kinda">Kinda Sans Serif</h1>
+        <p>This is a half a$$ font I made on my iPad.</p>
+        <div class="font-kinda font-container">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ
+          <br>
+          abcdefghijklmnopqrstuvwxyz
+          <br>
+          1234567890
+          <br>&amp;​.​,​?​!​@​(​)​#​$​%​*​+​-​=​:​;
+        </div>
       </main>
       <footer class="layout-footer">
-        <p>🦶Footer</p>
+        <p>Footer</p>
       </footer>
     </div>
 
   </div>
 </div>
 
+
 <script src="js/main.js" type="module"></script>
 <script>
-
   console.log('\n' +
     ' _______  _______  ______    _______  _______  _______  _______  ___      _______  _______  _______\n' +
     '|       ||       ||    _ |  |       ||       ||       ||       ||   |    |       ||       ||       |\n' +
@@ -70,7 +95,6 @@
   function displayHelp() {
     console.log('Available commands:');
     console.log(' - help(): help is as far as I have gotten');
-    alert('Available commands:\n - help(): help is as far as I have gotten');
   }
 
   // Define the help function

@@ -2,6 +2,7 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
+console.log('fileURLToPath', fileURLToPath);
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,9 +12,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/index.html'),
-        cowboy: resolve(__dirname, 'src/pages/for-fun/cowboy-font.html'),
-        kinda: resolve(__dirname, 'src/pages/for-fun/kinda-sans-serif-font.html'),
-        revealText: resolve(__dirname, 'src/pages/for-fun/reveal-text.html'),
+        cowboy: resolve(__dirname, 'src/cowboy-font.html'),
+        kinda: resolve(__dirname, 'src/kinda-sans-font.html'),
+        revealText: resolve(__dirname, 'src/hover-thing.html'),
       },
     },
   },

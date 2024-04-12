@@ -10,7 +10,7 @@
 //   <button id="js-hide-dialog" autofocus>Close</button>
 // </dialog>`
 
-const dialogStates = {
+const dialogState = {
   dialogEl:  document.querySelector("dialog"),
   showButton: document.getElementById("js-show-dialog"),
   closeButton: document.getElementById("js-hide-dialog"),
@@ -37,15 +37,10 @@ const dialogStates = {
     this.dialogEl.close();
   },
   init: function() {
+    console.log('dialogState init');
     this.attachEventListeners();
-    if (!this.checkLocalStorage()) {
-      this.openDialog();
-      this.setLocalStorage();
-    }
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  dialogStates.init();
-});
+export default dialogState;
 

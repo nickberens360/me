@@ -118,61 +118,61 @@
   <div id="container"></div>
   <div id="text"></div>
 </div>
-  <script>
-    const doc = document;
+<script>
+  const doc = document;
 
-    const boxWidth = 75;
-    const container = document.getElementById('container');
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    const rows = height / boxWidth;
-    const cols = width / boxWidth;
-    const totalDivs = rows * cols;
-    const divs = Array.from({ length: totalDivs }, () => document.createElement('div'));
-    divs.forEach(div => {
-      div.style.width = boxWidth + 'px';
-      div.style.height = boxWidth + 'px';
-      div.classList.add('box');
-      div.classList.add('bg');
-      container.appendChild(div);
-    });
+  const boxWidth = 75;
+  const container = document.getElementById('container');
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const rows = height / boxWidth;
+  const cols = width / boxWidth;
+  const totalDivs = rows * cols;
+  const divs = Array.from({ length: totalDivs }, () => document.createElement('div'));
+  divs.forEach(div => {
+    div.style.width = boxWidth + 'px';
+    div.style.height = boxWidth + 'px';
+    div.classList.add('box');
+    div.classList.add('bg');
+    container.appendChild(div);
+  });
 
-    container.addEventListener('mouseover', (e) => {
-      if (e.target.classList.contains('bg')) {
-        e.target.classList.add('transparent');
-      }
-    });
-
-    function revealText() {
-      let nTsHTmpl = '<span>NOTHING</span><span>TO</span><span>SEE</span><span>HERE</span>';
-      let helloWorldTmpl = '<span style="color: #70d1f1">PERFECTLESS<span style="color: lightgreen">/</span>WORLD</span>';
-      let nTsH = nTsHTmpl.repeat(7);
-      let helloWorld = helloWorldTmpl.repeat(1);
-      let secondRound = nTsHTmpl.repeat(400);
-      doc.getElementById('text').innerHTML = nTsH + helloWorld + secondRound;
+  container.addEventListener('mouseover', (e) => {
+    if (e.target.classList.contains('bg')) {
+      e.target.classList.add('transparent');
     }
+  });
 
-    revealText();
+  function revealText() {
+    let nTsHTmpl = '<span>NOTHING</span><span>TO</span><span>SEE</span><span>HERE</span>';
+    let helloWorldTmpl = '<span style="color: #70d1f1">PERFECTLESS<span style="color: lightgreen">/</span>WORLD</span>';
+    let nTsH = nTsHTmpl.repeat(7);
+    let helloWorld = helloWorldTmpl.repeat(1);
+    let secondRound = nTsHTmpl.repeat(400);
+    doc.getElementById('text').innerHTML = nTsH + helloWorld + secondRound;
+  }
 
-    var boxes = document.querySelectorAll('.box');
+  revealText();
 
-    // Get the audio element
-    var audio = document.getElementById('audio');
+  var boxes = document.querySelectorAll('.box');
 
-    // Set the playback speed (for example, 1.5x)
-    audio.playbackRate = 1;
+  // Get the audio element
+  var audio = document.getElementById('audio');
 
-    // Loop through each box element and add event listener
-    boxes.forEach(function(box) {
-      box.addEventListener('mouseover', function() {
-        audio.play();
-      });
+  // Set the playback speed (for example, 1.5x)
+  audio.playbackRate = 1;
+
+  // Loop through each box element and add event listener
+  boxes.forEach(function(box) {
+    box.addEventListener('mouseover', function() {
+      audio.play();
     });
+  });
 
 
 
 
-  </script>
+</script>
 
 </body>
 
