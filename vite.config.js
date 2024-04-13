@@ -8,6 +8,7 @@ console.log('fileURLToPath', fileURLToPath);
 export default defineConfig({
   root: "./src",
   assetsDir: "assets",
+  publicDir: "public",
   build: {
     outDir: 'dist',
     rollupOptions: {
