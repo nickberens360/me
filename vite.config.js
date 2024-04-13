@@ -7,6 +7,7 @@ console.log('fileURLToPath', fileURLToPath);
 // https://vitejs.dev/config/
 export default defineConfig({
   root: "./src",
+  assetsDir: "assets",
   build: {
     outDir: 'dist',
     rollupOptions: {
