@@ -10,3 +10,9 @@
 .layout-inner .layout-side .hero{
     font-size: 34rem;
 }
+
+@media (max-width: 768px) {
+    .layout-inner .layout-side .hero {
+        font-size: 12.5vw;
+    }
+}

@@ -1,6 +1,13 @@
 @import url('../assets/fonts/cowboy/stylesheet.css');
 @import url('../assets/fonts/kindaSansSerif/stylesheet.css');
 
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+}
+
 html {
     font-size: 6.25%;
 }
@@ -16,7 +23,6 @@ body {
     background: #1c1c1c;
     color: white;
     font-family: 'kinda_sans_serifregular', sans-serif;
-    overflow: hidden;
 }
 p {
     font-size: 24rem;
@@ -52,6 +58,24 @@ h1,h2,h3, h4, h5, h6 {
     font-family: cowboyregular, sans-serif;
     margin-top: 0;
     margin-bottom: 16rem;
+}
+
+nav {
+    margin-top: 16rem;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+nav li {
+    margin-bottom: 8rem;
+}
+nav a {
+    color: white;
+    font-size: 18rem;
+    text-decoration: underline;
+    display: block;
 }
 
 dialog {
@@ -94,20 +118,17 @@ dialog {
 }
 .layout-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 36rem;
-    max-width: 1450px;
+    max-width: 1250px;
     margin: 0 auto;
     width: 100%;
     flex-grow: 1;
-    flex-direction: column;
     padding: 16rem 16rem 0;
-    overflow: auto;
 }
 .layout-side {
     flex: 1 0 200px;
     max-width:200px;
-    /*border: 1px solid #ccc;*/
 }
 .layout-main {
     flex: 1;
@@ -117,7 +138,7 @@ dialog {
 }
 .layout-header {
     display: flex;
-    align-items: center; /* Align items vertically */
+    align-items: center;
     padding: 0 16rem;
 }
 .layout-header::after {
@@ -130,19 +151,28 @@ dialog {
     align-self: flex-start;
 }
 
+.kinda-hide {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
 .layout {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     height: 100vh;
     padding-top: 16rem;
-    /*overflow: hidden;*/
 }
 .layout-footer {
     width: 100%;
     margin-top: auto;
     border-top: 1px solid #ccc;
-    /*padding: 16rem;*/
     padding: 16px 0;
 }
 .layout-footer p {
@@ -180,17 +210,17 @@ dialog {
 .hero span {
     position: relative;
     display: inline-block;
-    /*transform: rotate(0deg) translate(0%, 0%);*/
-    /*!*transform-origin: bottom left;*!*/
-    /*top: 0;*/
-    /*transition: transform 0.1s ease-in;*/
+    transform: rotate(0deg) translate(0%, 0%);
+    /*transform-origin: bottom left;*/
+    top: 0;
+    transition: transform 0.1s ease-in;
 }
 
 
 .loaded .hero span {
-    animation: rotateAndFall 1.5s ease forwards;
-    /*transform: rotate(25deg) translate(10%, 0);*/
-    /*top: 100%*/
+    /*animation: rotateAndFall 1.5s ease forwards;*/
+    transform: rotate(25deg) translate(10%, 0);
+    top: 100%
 }
 
 @keyframes rotateAndFall {
@@ -207,23 +237,7 @@ dialog {
 }
 
 
-nav {
-    margin-top: 16rem;
-}
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-nav li {
-    margin-bottom: 8rem;
-}
-nav a {
-    color: white;
-    font-size: 18rem;
-    text-decoration: underline;
-    display: block;
-}
+
 
 .show-mobile {
     display: none;
@@ -233,19 +247,6 @@ nav a {
     display: none;
 }
 
-.code-window {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 500px;
-    height: 800px;
-    background: #333;
-    color: white;
-    padding: 16rem;
-    margin-top: 16rem;
-    border-radius: 8rem;
-    overflow: auto;
-}
 
 @media (max-width: 768px) {
     html {
@@ -261,7 +262,7 @@ nav a {
         display: none;
     }
     .layout-side {
-        flex: 1 0 100%;
+        flex:0;
         max-width: 100%;
     }
     .layout-nav {
@@ -288,6 +289,8 @@ nav a {
     /*h4 {*/
     /*    font-size: 1rem;*/
     /*}*/
-
+    .layout-container {
+        flex-direction: column;
+    }
 }
 

@@ -1,75 +1,59 @@
-const fetchCats = {
-  name: 'fetchCats',
-  icon: '',
-  title: '',
-  btnText: '',
-  images: '',
-  loading: false,
+const createFetchCatsModule = () => {
+  let icon = '';
+  let title = '';
+  let btnText = '';
+  let images = '';
+  let loading = false;
+  let catsFetched = localStorage.getItem('catsFetched') === 'true';
 
-  domTemplate: function() {
-    const iconClasses = this.loading ? 'cat-fetch__icon loader' : 'cat-fetch__icon';
+  const domTemplate = () => {
+    const iconClasses = loading ? 'cat-fetch__icon loader' : 'cat-fetch__icon';
     return `
-    <div id="cat-fetch">
-      <div class=cat-fetch__top>
-        <div class="${iconClasses}" id="js-cat-fetch-icon">${this.icon}</div>
-        <div class="cat-fetch__title-content">
-          <h3 class="cat-fetch__title" id="js-cat-fetch-title" style="font-size: 15px">${this.title}</h3>
-          <button class="cat-fetch__btn text-uppercase font-bold" id="js-cat-fetch-btn">${this.btnText}</button>
+      <div id="cat-fetch">
+        <div class="cat-fetch__top">
+          <div class="${iconClasses}" id="js-cat-fetch-icon">${icon}</div>
+          <div class="cat-fetch__title-content">
+            <h3 class="cat-fetch__title" id="js-cat-fetch-title" style="font-size: 15px">${title}</h3>
+            <button class="cat-fetch__btn text-uppercase font-bold" id="js-cat-fetch-btn">${btnText}</button>
+          </div>
         </div>
-      </div>
-      <div class="cat-fetch__images" id="js-cat-fetch-images">${this.images}</div>
-    </div>`;
-  },
+        <div class="cat-fetch__images" id="js-cat-fetch-images">${images}</div>
+      </div>`;
+  };
 
-  renderTemplate: function() {
+  const renderTemplate = () => {
     const container = document.getElementById('side-drawer');
-    const newTemplate = this.domTemplate();
+    container.innerHTML = domTemplate();
+  };
 
-    // Create a new document fragment
-    const fragment = document.createDocumentFragment();
+  const hasCatsState = async () => {
+    icon = '😻';
+    title = 'You haz cats!';
+    btnText = 'Haz more cats!';
+    loading = false;
+    renderTemplate();
+  };
 
-    // Create a temporary container element
-    const tempContainer = document.createElement('div');
-    tempContainer.innerHTML = newTemplate;
+  const noCatsState = async () => {
+    images = '';
+    loading = false;
+    icon = '😿';
+    title = 'Why you no haz cats?';
+    btnText = 'Haz cats!';
+    renderTemplate();
+  };
 
-    // Append each child node to the fragment
-    Array.from(tempContainer.childNodes).forEach(child => {
-      fragment.appendChild(child);
-    });
+  const loadingState = async () => {
+    icon = '😺';
+    title = 'Fetching cats...';
+    btnText = 'Loading...';
+    images = '';
+    loading = true;
+    renderTemplate();
+  };
 
-    // Replace the entire container content with the fragment
-    container.innerHTML = '';
-    container.appendChild(fragment);
-  },
-
-  hasCatsState: async function() {
-    this.icon = '😻';
-    this.title = 'You haz cats!';
-    this.btnText = 'Haz more cats!';
-    this.loading = false;
-    this.renderTemplate();
-  },
-
-  noCatsState: async function() {
-    this.images = '';
-    this.loading = false;
-    this.icon = '😿';
-    this.title = 'Why you no haz cats?';
-    this.btnText = 'Haz cats!';
-    this.renderTemplate();
-  },
-
-  loadingState: async function() {
-    this.icon = '😺';
-    this.title = 'Fetching cats...';
-    this.btnText = 'Loading...';
-    this.images = '';
-    this.loading = true;
-    this.renderTemplate();
-  },
-
-  fetchData: async function() {
-    await this.loadingState();
+  const fetchData = async () => {
+    await loadingState();
     const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=20';
     const apiKey = 'live_VBvwBMcfnXuwE9fOdVJJleJHJPKn46JptOvoIUoKBJ7I2WVURFGvBxP1itXaZbeh';
     try {
@@ -84,48 +68,49 @@ const fetchCats = {
       }
 
       const data = await response.json();
-      await this.createCatImages(data);
+      await createCatImages(data);
       setTimeout(() => {
-        this.hasCatsState();
-      } , 1000);
+        hasCatsState();
+      }, 1000);
       localStorage.setItem('catsFetched', true);
       localStorage.setItem('cats', JSON.stringify(data));
     } catch (error) {
       console.error('Fetch error:', error);
     }
-  },
+  };
 
-  createCatImages: async function(data) {
-    this.images = data.map(cat => `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`).join('');
-    this.renderTemplate();
-  },
+  const createCatImages = async (data) => {
+    images = data.map(cat => `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`).join('');
+    renderTemplate();
+  };
 
-  catsFetched: localStorage.getItem('catsFetched') === 'true',
-
-  setEventListeners: function() {
+  const setEventListeners = () => {
     const container = document.getElementById('side-drawer');
     container.addEventListener('click', (event) => {
       if (event.target.id === 'js-cat-fetch-btn') {
-        this.fetchData().then();
+        fetchData().then();
       } else if (event.target.id === 'js-cat-fetch-icon') {
         console.log('clicked');
         document.querySelector('body').classList.toggle('aside-open');
       }
     });
-  },
+  };
 
-  initModuleState: async function() {
-    const catsFetched = this.catsFetched;
+  const initModuleState = async () => {
     if (catsFetched) {
       const catData = JSON.parse(localStorage.getItem('cats'));
-      await this.createCatImages(catData);
-      await this.hasCatsState();
+      await createCatImages(catData);
+      await hasCatsState();
       document.querySelector('body').classList.toggle('aside-open');
     } else {
-      await this.noCatsState();
+      await noCatsState();
     }
-    this.setEventListeners();
-  },
+    setEventListeners();
+  };
+
+  return {
+    initModuleState
+  };
 };
 
-export default fetchCats;
+export default createFetchCatsModule();

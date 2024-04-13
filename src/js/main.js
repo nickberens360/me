@@ -1,4 +1,7 @@
-import dialogState from './modal.js';
+import createDialogState from './dialogState.js';
+
+const dialog = createDialogState();
+
 // import './currentYear.js';
 // import fetchCats  from './fetchCats.js';
 // import home from './content/home/home.js';
@@ -6,16 +9,16 @@ import dialogState from './modal.js';
 
 
 document.addEventListener('DOMContentLoaded', async function() {
-  let domContentLoaded = [];
+  let moduleCount = 0;
   console.log('DOMContentLoaded');
   try {
-      dialogState.init();
-      domContentLoaded.push('home');
+    dialog.init();
+      moduleCount++;
   } catch (error) {
     console.error('Error initializing dialog:', error);
   }
   setTimeout(() => {
-    if (domContentLoaded.length === 1) {
+    if (moduleCount === 1) {
       //add class to body to show content
       document.body.classList.add('loaded');
     }
