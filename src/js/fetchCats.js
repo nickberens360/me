@@ -12,12 +12,12 @@ const createFetchCatsModule = () => {
       <div id="cat-fetch">
         <div class="cat-fetch__top">
           <div class="${iconClasses}" id="js-cat-fetch-icon">${icon}</div>
+          <h3 class="cat-fetch__title" id="js-cat-fetch-title">${title}</h3>
           <div class="cat-fetch__title-content">
-            <h3 class="cat-fetch__title" id="js-cat-fetch-title" style="font-size: 15px">${title}</h3>
             <button class="cat-fetch__btn text-uppercase font-bold" id="js-cat-fetch-btn">${btnText}</button>
           </div>
         </div>
-        <div class="cat-fetch__images" id="js-cat-fetch-images">${images}</div>
+        <div class="cat-fetch__images masonry masonry--h" id="js-cat-fetch-images">${images}</div>
       </div>`;
   };
 
@@ -54,7 +54,7 @@ const createFetchCatsModule = () => {
 
   const fetchData = async () => {
     await loadingState();
-    const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=20';
+    const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=6';
     const apiKey = 'live_VBvwBMcfnXuwE9fOdVJJleJHJPKn46JptOvoIUoKBJ7I2WVURFGvBxP1itXaZbeh';
     try {
       const response = await fetch(apiUrl, {
@@ -80,23 +80,24 @@ const createFetchCatsModule = () => {
   };
 
   const createCatImages = async (data) => {
-    images = data.map(cat => `<img style="max-width: 100%" src="${cat.url}" alt="A cute cat" />`).join('');
+    images = data.map(cat => `<div class="cat-item masonry-brick masonry-brick--h"><img class="masonry-img" src="${cat.url}" alt="A cute cat" /></div>`).join('');
     renderTemplate();
   };
 
   const setEventListeners = () => {
-    const container = document.getElementById('side-drawer');
-    container.addEventListener('click', (event) => {
+    // const container = document.getElementById('side-drawer');
+    document.addEventListener('click', (event) => {
       if (event.target.id === 'js-cat-fetch-btn') {
         fetchData().then();
-      } else if (event.target.id === 'js-cat-fetch-icon') {
+      }
+      if (event.target.id === 'cat-side-trigger') {
         console.log('clicked');
         document.querySelector('body').classList.toggle('aside-open');
       }
     });
   };
 
-  const initModuleState = async () => {
+  const init = async () => {
     if (catsFetched) {
       const catData = JSON.parse(localStorage.getItem('cats'));
       await createCatImages(catData);
@@ -109,7 +110,7 @@ const createFetchCatsModule = () => {
   };
 
   return {
-    initModuleState
+    init,
   };
 };
 

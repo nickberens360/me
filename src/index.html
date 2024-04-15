@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🤠 Nick Berens</title>
   <link rel="stylesheet" href="styles/main.css" />
+  <script src="js/main.js" type="module"></script>
 </head>
 <body>
-<div class="layout-drawer">
-  Side Drawer
-</div>
 <dialog>
   <nav>
     <ul>
@@ -21,9 +19,13 @@
   </nav>
   <button id="js-hide-dialog" autofocus>Close</button>
 </dialog>
+<!--<div id="side-drawer" class="layout-drawer">-->
+<!--  Side Drawer-->
+<!--</div>-->
+
 <div class="layout">
   <header class="layout-header">
-    <div class="layout-header__icon"><button id="js-show-dialog" class="menu-icon">☰</button></div>
+    <div class="layout-header__icon"><button id="js-show-dialog" class="menu-icon">🍔</button></div>
     <p class="font-cowboy hero">PERFECTLES<span>S</span></p>
   </header>
   <div class="layout-container">
@@ -37,9 +39,12 @@
             <a href="hover-thing.html">Pointless Hover Thing</a></li>
         </ul>
       </nav>
-
+      <button id="cat-side-trigger" style="margin-top: 48rem;">
+        🐱
+        You want cats?
+      </button>
     </aside>
-    <div class="layout-main">
+    <div id="js-side-test" class="layout-main">
       <main>
         <h1 class="font-cowboy" style="display: flex; gap: 6px"><span>🤘</span> Hi, My name is Nick Berens</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime nobis quia tenetur veniam. Ad architecto beatae doloribus exercitationem libero nemo perspiciatis quisquam sed, ut! Animi blanditiis impedit praesentium quaerat veniam.</p>
@@ -54,7 +59,7 @@
   </div>
 </div>
 
-<script src="js/main.js" type="module"></script>
+
 <script>
 
   console.log('\n' +

@@ -6,11 +6,54 @@
   <title>🤠 Nick Berens | Layout Inner</title>
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/layout-inner.css" />
+  <style>
+    .cat-fetch__top {
+        text-align: center;
+        margin-bottom: 24rem;
+    }
+    .cat-fetch__icon {
+        font-size: 68rem;
+        margin-bottom: 24rem;
+        line-height: 1;
+    }
+    .cat-fetch__title {
+        font-size: 28rem;
+    }
+    .masonry {
+        display: flex;
+        width: 100%;
+        flex-flow: row wrap;
+    }
+    .masonry-brick {
+        overflow: hidden;
+        border-radius: 5px;
+        margin: 0 0 8px 8px;
+        background-color: #333;
+        color: white;
+        position: relative;
+        flex: auto;
+        height: 250px;
+        min-width: 150px;
+    }
+
+    .masonry-img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .masonry-brick--h:nth-child(4n+2) {
+            width: 325px;
+        }
+    }
+
+
+
+
+  </style>
 </head>
 <body class="layout-inner">
-<div class="layout-drawer">
-  Side Drawer
-</div>
 <dialog>
   <nav>
     <ul>
@@ -42,8 +85,7 @@
     </aside>
     <div class="layout-main">
       <main>
-        <h1>Inner Layout</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequuntur dolore fugiat id tenetur? Aut cupiditate libero magni nam necessitatibus pariatur perferendis perspiciatis possimus, quo rem sequi sit veritatis vero.</p>
+        <div id="side-drawer"></div>
       </main>
       <footer class="layout-footer">
         <p>Footer</p>
@@ -56,8 +98,6 @@
 
 <script src="js/main.js" type="module"></script>
 <script type="module">
-  import textEditorModule from './js/textEditor.js';
-  textEditorModule.init();
   console.log('\n' +
     ' _______  _______  ______    _______  _______  _______  _______  ___      _______  _______  _______\n' +
     '|       ||       ||    _ |  |       ||       ||       ||       ||   |    |       ||       ||       |\n' +

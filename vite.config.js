@@ -17,6 +17,7 @@ export default defineConfig({
         cowboy: resolve(__dirname, 'src/cowboy-font.html'),
         kinda: resolve(__dirname, 'src/kinda-sans-font.html'),
         revealText: resolve(__dirname, 'src/hover-thing.html'),
+        fetchCats: resolve(__dirname, 'src/fetch-some-cats.html'),
       },
     },
   },

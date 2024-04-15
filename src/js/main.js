@@ -1,9 +1,8 @@
 import createDialogState from './dialogState.js';
-
 const dialog = createDialogState();
-
+import createFetchCatsModule from './fetchCats.js';
 // import './currentYear.js';
-// import fetchCats  from './fetchCats.js';
+
 // import home from './content/home/home.js';
 // import hero from './content/parts/hero.js';
 
@@ -17,8 +16,16 @@ document.addEventListener('DOMContentLoaded', async function() {
   } catch (error) {
     console.error('Error initializing dialog:', error);
   }
+
+  try {
+    await createFetchCatsModule.init();
+    moduleCount++;
+  } catch (error) {
+    console.error('Error initializing fetchCats:', error);
+  }
+
   setTimeout(() => {
-    if (moduleCount === 1) {
+    if (moduleCount === 2) {
       //add class to body to show content
       document.body.classList.add('loaded');
     }

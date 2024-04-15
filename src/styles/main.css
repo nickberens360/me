@@ -20,7 +20,7 @@ body {
     font-size: 16rem;
     padding:  0;
     margin: 0;
-    background: #1c1c1c;
+    background: #131215;
     color: white;
     font-family: 'kinda_sans_serifregular', sans-serif;
 }
@@ -107,15 +107,24 @@ dialog {
 .layout-drawer {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     bottom: 0;
     width: 200px;
-    background-color: #333;
+    background-color: red;
     color: white;
     padding: 1rem;
-    transform: translateX(-100%);
+    transform: translateX(100%);
     transition: transform 0.3s;
+    z-index: 1000;
 }
+#js-cats-trigger:hover {
+    border: 1px solid red;
+}
+.aside-open .layout-drawer {
+    transform: translateX(0);
+}
+
+
 .layout-container {
     display: flex;
     flex-wrap: nowrap;
@@ -138,7 +147,8 @@ dialog {
 }
 .layout-header {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 0 16rem;
 }
 .layout-header::after {
@@ -150,6 +160,7 @@ dialog {
     display: flex;
     align-self: flex-start;
 }
+
 
 .kinda-hide {
     clip: rect(1px, 1px, 1px, 1px);
@@ -196,8 +207,18 @@ dialog {
     font-size: 34rem;
     padding-left: 0;
 }
+.cat-icon-btn {
+    position: relative;
+    top: -3px;
+    background: none;
+    border: none;
+    transition: opacity 0.3s;
+    color: white;
+    font-size: 34rem;
+    padding-left: 0;
+}
 .hero {
-    font-size: 15.5vw;
+    font-size: 15vw;
     margin: 0;
     line-height: 1;
     color: lightgreen;
@@ -211,14 +232,12 @@ dialog {
     position: relative;
     display: inline-block;
     transform: rotate(0deg) translate(0%, 0%);
-    /*transform-origin: bottom left;*/
     top: 0;
     transition: transform 0.1s ease-in;
 }
 
 
 .loaded .hero span {
-    /*animation: rotateAndFall 1.5s ease forwards;*/
     transform: rotate(25deg) translate(10%, 0);
     top: 100%
 }
@@ -239,6 +258,13 @@ dialog {
 
 
 
+
+
+
+
+
+
+
 .show-mobile {
     display: none;
 }
@@ -246,6 +272,9 @@ dialog {
 .show-mobile-flex {
     display: none;
 }
+
+
+
 
 
 @media (max-width: 768px) {
