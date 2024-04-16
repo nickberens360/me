@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     console.error('Error initializing dialog:', error);
   }
 
-  try {
-    await createFetchCatsModule.init();
-    moduleCount++;
-  } catch (error) {
-    console.error('Error initializing fetchCats:', error);
-  }
+  // try {
+  //   await createFetchCatsModule.init();
+  //   moduleCount++;
+  // } catch (error) {
+  //   console.error('Error initializing fetchCats:', error);
+  // }
 
   setTimeout(() => {
-    if (moduleCount === 2) {
+    if (moduleCount === 1) {
       //add class to body to show content
       document.body.classList.add('loaded');
     }

@@ -290,6 +290,9 @@ dialog {
     .hide-mobile {
         display: none;
     }
+    .layout-main {
+        padding-top: 0;
+    }
     .layout-side {
         flex:0;
         max-width: 100%;

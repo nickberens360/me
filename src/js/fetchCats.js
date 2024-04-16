@@ -5,14 +5,14 @@ const createFetchCatsModule = () => {
   let images = '';
   let loading = false;
   let catsFetched = localStorage.getItem('catsFetched') === 'true';
+          /*<div class="${iconClasses}" id="js-cat-fetch-icon">${icon}</div>*/
 
   const domTemplate = () => {
     const iconClasses = loading ? 'cat-fetch__icon loader' : 'cat-fetch__icon';
     return `
       <div id="cat-fetch">
         <div class="cat-fetch__top">
-          <div class="${iconClasses}" id="js-cat-fetch-icon">${icon}</div>
-          <h3 class="cat-fetch__title" id="js-cat-fetch-title">${title}</h3>
+          <h3 class="cat-fetch__title" id="js-cat-fetch-title"><span class="${iconClasses}" id="js-cat-fetch-icon">${icon}</span> ${title}</h3>
           <div class="cat-fetch__title-content">
             <button class="cat-fetch__btn text-uppercase font-bold" id="js-cat-fetch-btn">${btnText}</button>
           </div>
@@ -38,7 +38,7 @@ const createFetchCatsModule = () => {
     images = '';
     loading = false;
     icon = '😿';
-    title = 'Why you no haz cats?';
+    title = 'No haz cats?';
     btnText = 'Haz cats!';
     renderTemplate();
   };
