@@ -1,13 +1,6 @@
 @import url('../assets/fonts/cowboy/stylesheet.css');
 @import url('../assets/fonts/kindaSansSerif/stylesheet.css');
 
-:root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --background-color: #f8f9fa;
-    --text-color: #212529;
-}
-
 html {
     font-size: 6.25%;
 }
@@ -256,7 +249,6 @@ dialog nav li {
     transition: transform 0.1s ease-in;
 }
 
-
 .loaded .hero span {
     transform: rotate(25deg) translate(10%, 0);
     top: 100%
@@ -287,10 +279,6 @@ dialog nav li {
 .show-mobile-flex {
     display: none;
 }
-
-
-
-
 
 @media (max-width: 800px) {
     html {
@@ -327,22 +315,12 @@ dialog nav li {
     .menu-icon {
         opacity: 1;
     }
-    /*h1 {*/
-    /*    font-size: 2rem;*/
-    /*}*/
     h2 {
         font-size: 32rem;
     }
     h3 {
         font-size: 26rem;
     }
-
-    /*h3 {*/
-    /*    font-size: 1.25rem;*/
-    /*}*/
-    /*h4 {*/
-    /*    font-size: 1rem;*/
-    /*}*/
     .layout-container {
         flex-direction: column;
     }

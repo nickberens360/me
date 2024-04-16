@@ -27,7 +27,6 @@ const createDialogState = () => {
   };
 
   const init = () => {
-    console.log('dialogState init');
     dialogEl = document.querySelector("dialog");
     showButton = document.getElementById("js-show-dialog");
     closeButton = document.getElementById("js-hide-dialog");

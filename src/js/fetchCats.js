@@ -1,3 +1,4 @@
+const catApiKey = import.meta.env.VITE_CATS_ACCESS_TOKEN;
 const createFetchCatsModule = () => {
   let icon = '';
   let title = '';
@@ -55,11 +56,10 @@ const createFetchCatsModule = () => {
   const fetchData = async () => {
     await loadingState();
     const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=6';
-    const apiKey = 'live_VBvwBMcfnXuwE9fOdVJJleJHJPKn46JptOvoIUoKBJ7I2WVURFGvBxP1itXaZbeh';
     try {
       const response = await fetch(apiUrl, {
         headers: {
-          'x-api-key': apiKey
+          'x-api-key': catApiKey
         }
       });
 
