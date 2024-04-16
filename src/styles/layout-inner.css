@@ -11,7 +11,7 @@
     font-size: 34rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .layout-inner .layout-side .hero {
         font-size: 12.5vw;
     }

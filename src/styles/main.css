@@ -77,7 +77,10 @@ nav a {
     text-decoration: underline;
     display: block;
 }
-
+nav span {
+    margin-right: 8rem;
+    font-size: 30rem !important;
+}
 dialog {
     width: 90%;
     height: 100vh;
@@ -85,6 +88,20 @@ dialog {
     background: black;
     transform: translateX(10%);
 }
+dialog nav a {
+    font-family: sans-serif;
+    font-size: 32rem;
+    color: white;
+}
+dialog nav span {
+    margin-right: 8rem;
+    font-size: 48rem !important;
+}
+dialog nav li {
+    margin-bottom: 48rem;
+}
+
+
 ::backdrop {
     background: black;
     opacity: 0.75;
@@ -181,6 +198,9 @@ dialog {
     padding-top: 16rem;
 }
 .layout-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     margin-top: auto;
     border-top: 1px solid #ccc;
@@ -255,18 +275,13 @@ dialog {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 .show-mobile {
     display: none;
+}
+
+.opacity-show-mobile {
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .show-mobile-flex {
@@ -277,9 +292,12 @@ dialog {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     html {
-        font-size: 5.25%;
+        font-size: 4.25%;
+    }
+    .opacity-show-mobile {
+        opacity: 1;
     }
     .show-mobile {
         display: block;
@@ -312,9 +330,13 @@ dialog {
     /*h1 {*/
     /*    font-size: 2rem;*/
     /*}*/
-    /*h2 {*/
-    /*    font-size: 1.5rem;*/
-    /*}*/
+    h2 {
+        font-size: 32rem;
+    }
+    h3 {
+        font-size: 26rem;
+    }
+
     /*h3 {*/
     /*    font-size: 1.25rem;*/
     /*}*/
@@ -326,3 +348,11 @@ dialog {
     }
 }
 
+@media (max-width: 400px) {
+    footer {
+        flex-direction: column;
+    }
+    footer button {
+        margin-top: 8rem;
+    }
+}
