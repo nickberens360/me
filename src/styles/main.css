@@ -9,8 +9,8 @@ html {
     box-sizing: border-box;
 }
 body {
-    line-height: 32rem;
-    font-size: 16rem;
+    line-height: 32px;
+    font-size: 16px;
     padding:  0;
     margin: 0;
     background: #131215;
@@ -18,28 +18,28 @@ body {
     font-family: 'kinda_sans_serifregular', sans-serif;
 }
 p {
-    font-size: 24rem;
+    font-size: 24px;
     line-height: 1.5;
     margin-top: 0;
 }
 
 h1 {
-    font-size: 40rem;
+    font-size: 40px;
 }
 h2 {
-    font-size: 34rem;
+    font-size: 34px;
 }
 h3 {
-    font-size: 26rem;
+    font-size: 26px;
 }
 h4 {
-    font-size: 24rem;
+    font-size: 24px;
 }
 h5 {
-    font-size: 24rem;
+    font-size: 24px;
 }
 h6 {
-    font-size: 24rem;
+    font-size: 24px;
 }
 
 
@@ -50,11 +50,11 @@ h1,h2,h3, h4, h5, h6 {
     font-weight: bold;
     font-family: cowboyregular, sans-serif;
     margin-top: 0;
-    margin-bottom: 16rem;
+    margin-bottom: 16px;
 }
 
 nav {
-    margin-top: 16rem;
+    margin-top: 16px;
 }
 nav ul {
     list-style: none;
@@ -62,17 +62,17 @@ nav ul {
     margin: 0;
 }
 nav li {
-    margin-bottom: 8rem;
+    margin-bottom: 8px;
 }
 nav a {
     color: white;
-    font-size: 18rem;
+    font-size: 18px;
     text-decoration: underline;
     display: block;
 }
 nav span {
-    margin-right: 8rem;
-    font-size: 30rem !important;
+    margin-right: 8px;
+    font-size: 30px !important;
 }
 dialog {
     width: 90%;
@@ -83,15 +83,15 @@ dialog {
 }
 dialog nav a {
     font-family: sans-serif;
-    font-size: 32rem;
+    font-size: 32px;
     color: white;
 }
 dialog nav span {
-    margin-right: 8rem;
-    font-size: 48rem !important;
+    margin-right: 8px;
+    font-size: 48px !important;
 }
 dialog nav li {
-    margin-bottom: 48rem;
+    margin-bottom: 48px;
 }
 
 
@@ -101,10 +101,10 @@ dialog nav li {
 }
 
 .sub-heading {
-    font-size: 24rem;
+    font-size: 24px;
     font-weight: bold;
     margin-top: 0;
-    margin-bottom: 32rem;
+    margin-bottom: 32px;
 }
 
 .font-cowboy {
@@ -122,7 +122,7 @@ dialog nav li {
     width: 200px;
     background-color: red;
     color: white;
-    padding: 1rem;
+    padding: 1px;
     transform: translateX(100%);
     transition: transform 0.3s;
     z-index: 1000;
@@ -138,12 +138,12 @@ dialog nav li {
 .layout-container {
     display: flex;
     flex-wrap: nowrap;
-    gap: 36rem;
+    gap: 36px;
     max-width: 1250px;
     margin: 0 auto;
     width: 100%;
     flex-grow: 1;
-    padding: 16rem 16rem 0;
+    padding: 16px 16px 0;
 }
 .layout-side {
     flex: 1 0 200px;
@@ -153,13 +153,13 @@ dialog nav li {
     flex: 1;
     max-width: 1000px;
     margin: 0 auto;
-    padding-top: 24rem;
+    padding-top: 24px;
 }
 .layout-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 0 16rem;
+    padding: 0 16px;
 }
 .layout-header::after {
     flex: 1;
@@ -188,7 +188,7 @@ dialog nav li {
     flex-direction: column;
     flex-grow: 1;
     height: 100vh;
-    padding-top: 16rem;
+    padding-top: 16px;
 }
 .layout-footer {
     display: flex;
@@ -217,7 +217,7 @@ dialog nav li {
     opacity: 0;
     transition: opacity 0.3s;
     color: white;
-    font-size: 34rem;
+    font-size: 34px;
     padding-left: 0;
 }
 .cat-icon-btn {
@@ -227,7 +227,7 @@ dialog nav li {
     border: none;
     transition: opacity 0.3s;
     color: white;
-    font-size: 34rem;
+    font-size: 34px;
     padding-left: 0;
 }
 .hero {
@@ -307,7 +307,7 @@ dialog nav li {
         display: none;
     }
     .layout-header {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5px;
     }
     .hero {
         font-size: 12.5vw;
@@ -316,10 +316,10 @@ dialog nav li {
         opacity: 1;
     }
     h2 {
-        font-size: 32rem;
+        font-size: 32px;
     }
     h3 {
-        font-size: 26rem;
+        font-size: 26px;
     }
     .layout-container {
         flex-direction: column;
@@ -331,6 +331,6 @@ dialog nav li {
         flex-direction: column;
     }
     footer button {
-        margin-top: 8rem;
+        margin-top: 8px;
     }
 }

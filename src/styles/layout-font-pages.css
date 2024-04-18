@@ -3,7 +3,7 @@
 }
 p {
     line-height: 1;
-    margin-bottom: 34rem;
+    margin-bottom: 34px;
 }
 .font-container {
     font-size: 5.5vw;
@@ -12,16 +12,16 @@ p {
 }
 .font-controls {
     display: flex;
-    margin-bottom: 24rem;
-    padding: 8rem 16rem;
-    border-radius: 8rem;
+    margin-bottom: 24px;
+    padding: 8px 16px;
+    border-radius: 8px;
     background-color: rgba(28, 28, 28, 0.25);
 }
 input {
-    padding: 4rem;
-    margin-right: 8rem;
+    padding: 4px;
+    margin-right: 8px;
     border: 1px solid #ccc;
-    border-radius: 4rem;
+    border-radius: 4px;
     font-family: sans-serif !important;
 }
 @media (max-width: 800px) {
@@ -37,10 +37,10 @@ input {
     }
     .font-controls input {
         width: 100%;
-        margin-bottom: 8rem;
+        margin-bottom: 8px;
     }
     .font-controls {
-        padding-top: 16rem;
+        padding-top: 16px;
         display: block;
     }
 }
