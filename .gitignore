@@ -4,3 +4,5 @@
 *.back
 *.BAK
 *dist
+*.idea/**
+

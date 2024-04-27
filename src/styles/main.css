@@ -1,10 +1,6 @@
 @import url('../assets/fonts/cowboy/stylesheet.css');
 @import url('../assets/fonts/kindaSansSerif/stylesheet.css');
 
-html {
-    font-size: 6.25%;
-}
-
 * {
     box-sizing: border-box;
 }
